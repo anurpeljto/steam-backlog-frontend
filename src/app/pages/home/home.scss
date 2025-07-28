@@ -3,7 +3,7 @@ video {
     top: 0;
     left: 0;
     object-fit: cover;
-    max-height: 600px;
+    max-height: 700px;
     width: 100%;
     border-radius: 16px;
     z-index: -1;
@@ -54,7 +54,7 @@ video {
     overflow: hidden;
 }
 
-.video-scroll-wrapped.scrolled .video-scroll-inner video {
+.video-scroll-wrapper.scrolled .video-scroll-inner video {
     border-radius: 16px;
 }
 
@@ -64,10 +64,12 @@ video {
     justify-content: start;
     align-items: center;
     position: relative;
-    margin-left: 5em;
-    margin-right: 5em;
+    // margin-left: 5em;
+    // margin-right: 5em;
     height: 20vh;
-    margin-top: 4em;
+    padding-top: 5em;
+    gap: 1em;
+    background-color: black;
 }
 
 .action-button {
