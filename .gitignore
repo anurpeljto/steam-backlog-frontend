@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 # Video
-./public/videogames.mp4
+/public/videogames.mp4
