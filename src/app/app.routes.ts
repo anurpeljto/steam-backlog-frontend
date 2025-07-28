@@ -1,0 +1,19 @@
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+    {
+        path: '',
+        loadComponent: () => 
+            import('./pages/home/home').then(m => m.Home)
+    },
+    {
+        path: 'steam/callback',
+        loadComponent: () => 
+            import('./pages/callback/callback').then(m => m.Callback)
+    },
+    {
+        path: 'dashboard',
+        loadComponent: () => 
+            import('./pages/callback/callback').then(m=>m.Callback)
+    }
+];

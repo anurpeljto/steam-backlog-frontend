@@ -1,0 +1,29 @@
+<div class="card">
+    <img [src]="game.header_image" [alt]="game.name">
+    <div class="details">
+        <strong>{{game.name}}</strong>
+        <div class="tag-container">
+           @if (game.genres && game.genres.length > 2) {
+             @for (genre of game.genres.slice(0,3); track $index) {
+            <div class="tag">
+                {{genre}}
+            </div>
+            }
+           }
+        </div>
+        <div class="completed?">
+            <p>Playtime: {{(game.playtime_minutes / 60).toFixed(2)}}h</p>
+            <div class="completed">
+                <p>Completed: {{game.completed || '-'}}</p>
+                <div class="buttons">
+                    <div class="action-button">
+                        <fa-icon [icon]="faCheck" matTooltip="Mark finished"></fa-icon>
+                    </div>
+                    <div class="action-button">
+                        <fa-icon [icon]="faBan" matTooltip="Mark not finished"></fa-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

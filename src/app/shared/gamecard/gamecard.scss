@@ -1,0 +1,56 @@
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    background-color: #151418;
+    padding: 1em;
+    border-radius: 5px;
+    gap: 0.5em;
+    color: #69686D;
+}
+
+img {
+    object-fit: cover;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.tag-container {
+    display: flex;
+    width: 100%;
+    gap: 1em;
+    color: #3B3A41;
+}
+
+.completed {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+    cursor: pointer;
+}
+
+.action-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
