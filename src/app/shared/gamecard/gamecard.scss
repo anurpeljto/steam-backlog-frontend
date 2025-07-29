@@ -1,6 +1,9 @@
 .card {
     display: flex;
     flex-direction: column;
+    @media (max-width: 1280px){
+        max-width: 400px;
+    }
 }
 
 .details {
@@ -15,13 +18,14 @@
 
 img {
     object-fit: cover;
+    max-height: 215px;
 }
 
 .tag {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: #69686D;
     padding: 5px;
     border-radius: 5px;
 }
@@ -29,8 +33,13 @@ img {
 .tag-container {
     display: flex;
     width: 100%;
-    gap: 1em;
-    color: #3B3A41;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em 1em;
+    // color: #3B3A41;
+    color: white;
+    cursor: pointer;
 }
 
 .completed {
@@ -53,4 +62,12 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;    
+}
+
+.tag.more {
+    background-color: var(--green) !important;
+}
+
+.tag.less {
+    background-color: var(--brown) !important;
 }

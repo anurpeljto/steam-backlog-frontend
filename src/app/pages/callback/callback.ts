@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { interval, Subscription, switchMap } from 'rxjs';
 import { Gamecard } from '../../shared/gamecard/gamecard';
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import { GameService } from '../../core/services/game.service';
 
 
 type SteamJwtPayload = {
@@ -20,11 +21,12 @@ type SteamJwtPayload = {
 
 @Component({
   selector: 'app-callback',
-  imports: [FontAwesomeModule, HttpClientModule, Gamecard],
+  imports: [FontAwesomeModule, Gamecard, MatPaginatorModule],
   templateUrl: './callback.html',
   styleUrl: './callback.scss'
 })
 export class Callback implements OnInit{
+  @ViewChild('gamesList') gameListRef?: ElementRef;
   token: string = '';
   steam_id: string | undefined;
   avatar: string | undefined;
@@ -32,11 +34,20 @@ export class Callback implements OnInit{
   profileUrl: string | undefined;
   profileUrlName: string | undefined = '';
   gameData: any = null;
+  games: any = null;
+  totalPages: number | null = null;
+  total: number | null = null;
+  page: number = 0;
+  size: number = 50;
+  genres: any | null = null;
   private pollSub?: Subscription;
 
   faSteam = faSteam;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private gameService: GameService) {
+  }
+
+  loadUserData() {
     const storageToken = localStorage.getItem('token');
     if (!storageToken) {
       const tokenFromUrl = this.route.snapshot.queryParamMap.get('token');
@@ -69,10 +80,12 @@ export class Callback implements OnInit{
   }
 
   ngOnInit(): void {
+    this.loadUserData();
+    this.getGenres();
     if (this.route.snapshot.queryParamMap.get('token')) {
       this.triggerSteamSync().then(() => this.startPolling()); 
     } else {
-      this.loadGameDataFromDb();
+      this.loadGameDataFromDb(this.page, this.size);
       this.startPolling();
     }
 
@@ -82,18 +95,29 @@ export class Callback implements OnInit{
 
   async triggerSteamSync() {
   try {
-      await axios.get(`http://localhost:3000/user-search/games/${this.steam_id}`);
+      await this.gameService.triggerSteamSync(this.steam_id);
       console.log('Steam sync triggered');
     } catch (err) {
       console.error('Failed to sync with Steam', err);
     }
   }
 
-  loadGameDataFromDb() {
-    this.http.get<any[]>(`http://localhost:3000/user-search/games/${this.steam_id}/metadata`)
+  loadGameDataFromDb(page: number, size: number, filter?: string, genre?: string, category?: string) {
+    const params = new URLSearchParams();
+
+    params.set('page', page.toString());
+    params.set('size', size.toString());
+
+    if (filter) params.set('filter', filter);
+    if (genre) params.set('genre', genre); 
+    if (category) params.set('category', category);
+    this.gameService.loadGameDataFromDB(this.steam_id, params)
       .subscribe({
         next: (data) => {
           this.gameData = data;
+          this.games = data.games;
+          this.totalPages = data.totalPages;
+          this.total = data.total;
           console.log('Loaded from DB:', this.gameData);
         },
         error: (err) => console.error('Failed to load from DB', err)
@@ -104,17 +128,65 @@ export class Callback implements OnInit{
     if (!this.steam_id) return;
 
     this.pollSub = interval(5000).pipe(
-      switchMap(() => this.http.get<any[]>(`http://localhost:3000/user-search/games/${this.steam_id}/metadata`))
+      switchMap(() => this.gameService.startPolling(this.steam_id, this.page, this.size))
     ).subscribe({
       next: (data) => {
         this.gameData = data;
-        if (data.every(g => !g.loadingMetadata)) {
+        this.games = data.games;
+        this.totalPages = data.totalPages;
+        this.total = data.total;
+        if (this.games.every((g: any) => !g.loadingMetadata)) {
           console.log('All metadata loaded, stopping polling.');
           this.pollSub?.unsubscribe();
         }
       },
       error: (err) => console.error('Polling failed', err)
     });
+  }
+
+  onChangePage(event: PageEvent){
+    const pageIndex = event.pageIndex;
+    const pageSize = event.pageSize;
+    this.page = pageIndex;
+    this.size = pageSize;
+    this.loadGameDataFromDb(pageIndex, pageSize);
+    this.gameListRef?.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  filterNeverPlayed() {
+    this.page = 0;
+    this.size = 50;
+    this.loadGameDataFromDb(this.page, this.size, "0");
+  }
+
+  filterLessThan3Hrs() {
+    this.page = 0;
+    this.size = 50;
+    this.loadGameDataFromDb(this.page, this.size, "180");
+  }
+
+  getGenres(): void {
+    this.gameService.fetchGenres(this.steam_id).subscribe(data => {
+      this.genres = data.genres;
+    })
+  }
+
+  queryByGenre(genre: string){
+    this.page = 0;
+    this.size = 50;
+    return this.loadGameDataFromDb(this.page, this.size, undefined, genre);
+  }
+
+  queryByFilter(filter: number){
+    this.page = 0;
+    this.size = 50;
+    return this.loadGameDataFromDb(this.page, this.size, String(filter), undefined);
+  }
+
+  queryByCategory(category: string) {
+    this.page = 0;
+    this.size = 50;
+    return this.loadGameDataFromDb(this.page, this.size, undefined, undefined, category);
   }
 
   ngOnDestroy(): void {

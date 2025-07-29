@@ -82,6 +82,66 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
+    margin-top: 1em;
     gap: 3em;
     background-color: black;
+    @media (max-width: 1280px){
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+}
+
+.title {
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+mat-paginator {
+    position: sticky;
+    bottom: 0; 
+    left: 0;
+    justify-content: center;
+    background-color: black !important;
+    color: #69686D;
+    font-size: 1em;
+}
+
+::ng-deep .mat-mdc-select-panel {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-mdc-option {
+    background-color: black !important;
+    color: #69686D !important;
+}
+
+::ng-deep .mat-mdc-select {
+    color: var(--yellow) !important;
+}
+
+::ng-deep .mat-mdc-option-active > .mdc-list-item__primary-text {
+    color: var(--yellow) !important;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #69686D;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tags-container {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
 }

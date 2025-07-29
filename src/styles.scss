@@ -39,6 +39,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: black;
     color: white;
+    overscroll-behavior: none;
 }
 
 p {
@@ -58,7 +59,14 @@ a {
 
 :root {
     --purple: #1B0554;
+    --brightPurple: #2A0884;
     --yellow: #FCD23F;
+    --darkerYellow: #FBC60D;
+    --brown: #842A08;
+    --green: #08842A;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,body {
+    overscroll-behavior: none;
+}

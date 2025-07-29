@@ -1,6 +1,6 @@
 <section class="main-container">
     <div class="profile-container">
-        <div class="user">
+        <div class="user" #gamesList>
             <img [src]="avatar" alt="avatar" class="icon"/>
             <h1>{{personaname}}</h1>
             <a [href]="profileUrl"><fa-icon [icon]="faSteam"></fa-icon> {{profileUrlName}}</a>
@@ -16,9 +16,28 @@
         <img src="gallery.jpg" alt="Steam library" class="lib">
     </div>
     <!--  -->
-    <div class="games-container">
-        @for (game of gameData; track $index) {
-            <app-gamecard [game]="game"></app-gamecard>
-        }
+    <div class="top">
+        <p class="title">Your games</p>
+        <div class="tags-container">
+            @for (genre of genres; track $index) {
+                <div class="tag" (click)="queryByGenre(genre.genre)">
+                    {{genre.genre}}
+                </div>
+            }
+        </div>
+        <div class="tags-container">
+            <div class="tag" style="background-color: red;" (click)="queryByFilter(0)">
+                Never played
+            </div>
+            <div class="tag" style="background-color: var(--darkerYellow);" (click)="queryByFilter(180)">
+                Less than 3 hours played
+            </div>
+        </div>
+        <div class="games-container">
+            @for (game of games; track $index) {
+                <app-gamecard [action]="queryByGenre.bind(this)" [game]="game"></app-gamecard>
+            }
+        </div>
+        <mat-paginator [length]="total" [pageSize]="50" (page)="onChangePage($event)" [pageSizeOptions]="[25,50,100]"></mat-paginator>
     </div>
 </section>

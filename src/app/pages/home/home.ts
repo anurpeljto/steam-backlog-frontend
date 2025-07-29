@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,15 @@ import { Component, HostListener } from '@angular/core';
 })
 export class Home {
   scrolled: boolean = false;
+
+  constructor(
+    private router: Router
+  ){
+    const token = localStorage.getItem('token');
+    if(token && this.router.url === '/'){
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   @HostListener('window:scroll', [])
   handleScroll(){
