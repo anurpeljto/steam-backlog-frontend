@@ -3,12 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { interval, Subscription, switchMap } from 'rxjs';
 import { Gamecard } from '../../shared/gamecard/gamecard';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { GameService } from '../../core/services/game.service';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 type SteamJwtPayload = {
   steam_id: string;
@@ -21,7 +20,7 @@ type SteamJwtPayload = {
 
 @Component({
   selector: 'app-callback',
-  imports: [FontAwesomeModule, Gamecard, MatPaginatorModule],
+  imports: [FontAwesomeModule, Gamecard, MatPaginatorModule, MatProgressSpinnerModule],
   templateUrl: './callback.html',
   styleUrl: './callback.scss'
 })
@@ -40,11 +39,12 @@ export class Callback implements OnInit{
   page: number = 0;
   size: number = 50;
   genres: any | null = null;
+  dataLoaded: boolean = false;
   private pollSub?: Subscription;
 
   faSteam = faSteam;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private gameService: GameService) {
+  constructor(private route: ActivatedRoute, private gameService: GameService) {
   }
 
   loadUserData() {
@@ -118,6 +118,11 @@ export class Callback implements OnInit{
           this.games = data.games;
           this.totalPages = data.totalPages;
           this.total = data.total;
+          if (this.games && this.games.length > 0) {
+            this.dataLoaded = true;
+          } else {
+            this.dataLoaded = false;
+          }
           console.log('Loaded from DB:', this.gameData);
         },
         error: (err) => console.error('Failed to load from DB', err)
@@ -126,8 +131,7 @@ export class Callback implements OnInit{
 
   startPolling() {
     if (!this.steam_id) return;
-
-    this.pollSub = interval(5000).pipe(
+    this.pollSub = interval(2000).pipe(
       switchMap(() => this.gameService.startPolling(this.steam_id, this.page, this.size))
     ).subscribe({
       next: (data) => {
@@ -135,6 +139,11 @@ export class Callback implements OnInit{
         this.games = data.games;
         this.totalPages = data.totalPages;
         this.total = data.total;
+
+        if (this.games && this.games.length > 0) {
+          this.dataLoaded = true;
+        }
+
         if (this.games.every((g: any) => !g.loadingMetadata)) {
           console.log('All metadata loaded, stopping polling.');
           this.pollSub?.unsubscribe();
@@ -150,7 +159,7 @@ export class Callback implements OnInit{
     this.page = pageIndex;
     this.size = pageSize;
     this.loadGameDataFromDb(pageIndex, pageSize);
-    this.gameListRef?.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+    // this.gameListRef?.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 
   filterNeverPlayed() {

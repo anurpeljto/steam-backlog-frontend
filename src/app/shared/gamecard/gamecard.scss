@@ -45,8 +45,9 @@ img {
 .completed {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: start;
 }
 
 .buttons {
@@ -65,9 +66,15 @@ img {
 }
 
 .tag.more {
-    background-color: var(--green) !important;
+    // background-color: var(--) !important;
 }
 
 .tag.less {
     background-color: var(--brown) !important;
+}
+
+.completed-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

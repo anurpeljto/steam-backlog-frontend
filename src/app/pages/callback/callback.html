@@ -33,11 +33,19 @@
                 Less than 3 hours played
             </div>
         </div>
-        <div class="games-container">
-            @for (game of games; track $index) {
-                <app-gamecard [action]="queryByGenre.bind(this)" [game]="game"></app-gamecard>
-            }
-        </div>
-        <mat-paginator [length]="total" [pageSize]="50" (page)="onChangePage($event)" [pageSizeOptions]="[25,50,100]"></mat-paginator>
+        @if (dataLoaded) {
+            <div class="games-container">
+                @for (game of games; track $index) {
+                    <app-gamecard [action]="queryByGenre.bind(this)" [category]="queryByCategory.bind(this)" [game]="game"></app-gamecard>
+                }
+                    <mat-paginator [length]="total" [pageSize]="50" (page)="onChangePage($event)" [pageSizeOptions]="[25,50,100]"></mat-paginator>
+            </div>
+        }
+        @if(!dataLoaded) {
+            <div class="spinner">
+                <mat-progress-spinner mode="indeterminate" color="accent" diameter="250"></mat-progress-spinner>
+                <h1>Please bare with us while we fetch your game metadata :)</h1>
+            </div>
+        }
     </div>
 </section>
