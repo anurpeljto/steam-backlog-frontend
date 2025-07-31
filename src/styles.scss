@@ -61,7 +61,7 @@ p {
     padding: 0;
 }
 
-h1, h2, h3 {
+h1, h2, h3, html {
     padding: 0;
     margin: 0;
 }
@@ -92,4 +92,30 @@ html,body {
 p, h1, h2, h3 {
   padding: 0;
   margin: 0;
+}
+
+.cursor-pointing {
+  cursor: url('../public/hand_point.png') 8 8, auto;
+}
+
+.cursor-closed {
+    cursor: url('../public/hand_closed.png') 8 8, auto;
+}
+
+*,
+*:hover,
+*:focus,
+*:active {
+  cursor: url('../public/hand_point.png') 8 8, auto !important;
+}
+
+body.cursor-closed *,
+body.cursor-closed *:hover,
+body.cursor-closed *:focus,
+body.cursor-closed *:active {
+  cursor: url('../public/hand_closed.png') 8 8, auto !important;
+}
+
+::selection {
+  cursor: url('../public/hand_point.png') 8 8, auto !important;
 }

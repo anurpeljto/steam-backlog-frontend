@@ -1,15 +1,12 @@
-video {
-    // position: absolute;
-    top: 0;
+.bg-vid {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
     left: 0;
+    top: 0;
+    z-index: 1;
     object-fit: cover;
-    max-height: 700px;
-    width: 100%;
-    border-radius: 16px;
-    z-index: -1;
-    @media (max-width: 1280px){
-        max-height: 400px;
-    }
+    object-position: top;
 }
 
 .greeting {
@@ -25,50 +22,12 @@ video {
     padding: 1rem;
 }
 
-.video-scroll-wrapper {
-    width: 100vw;
-    position: relative;
-    overflow: hidden;
-}
-
-.video-scroll-inner {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    // height: 50vh;
-    transition: all 0.5s ease-in-out;
-}
-
-.video-scroll-inner video {
-    width: 100vw;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0;
-    transition: all 0.5s ease-in-out;
-}
-
-.video-scroll-wrapper.scrolled .video-scroll-inner {
-    width: calc(100% - 10em);
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.video-scroll-wrapper.scrolled .video-scroll-inner video {
-    border-radius: 16px;
-}
-
 .main-content {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     position: relative;
-    // margin-left: 5em;
-    // margin-right: 5em;
     height: 20vh;
     padding-top: 0em;
     gap: 1em;
@@ -76,11 +35,7 @@ video {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    // background-image: url('../../../../public/bg-1.jpg');
-    // background-position: center;
-    // background-size: contain;
-    // background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(216, 2, 79, 1) 28%, rgba(75, 41, 237, 1) 76%, rgba(0, 0, 0, 1) 100%);
+    z-index: 100;
 }
 
 .action-button {
@@ -109,6 +64,7 @@ h3 {
     white-space: nowrap;     
     display: inline-block;   
     z-index: 1000;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .title-container {
@@ -117,6 +73,7 @@ h3 {
     position: relative;
     justify-content: center;
     align-items: center;
+    z-index: 100;
 }
 
 .sprite {

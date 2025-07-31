@@ -9,8 +9,8 @@ nav {
     padding-bottom: 2em;
     justify-content: start;
     align-items: center;
-    gap: 3em;
-    background-color: black;
+    gap: 2em;
+    background-color: transparent;
     color: white;
     z-index: 1000;
 }
@@ -18,3 +18,28 @@ nav {
 nav > a {
     font-size: large;
 }
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+nav > a:hover > .line {
+    background-color: green;
+    animation: appear 0.3s linear forwards;
+}
+
+@keyframes appear {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+    100% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
+
