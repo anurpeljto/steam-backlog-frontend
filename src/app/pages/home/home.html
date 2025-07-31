@@ -1,11 +1,24 @@
-<div class="video-scroll-wrapper" [class.scrolled] = "scrolled">
+<!-- <div class="video-scroll-wrapper" [class.scrolled] = "scrolled">
     <div class="video-scroll-inner">
         <video src="videogames.mp4" autoplay loop muted></video>
     </div>
-</div>
+</div> -->
+<!-- <div class="img-bg">
+    <img src="bg.jpg" alt="Background vector">
+</div> -->
 <section class="main-content">
-    <h1>Welcome to Steam Backlog Helper</h1>
-    <h3 style="font-weight: normal;">Please sign in with Steam to continue</h3>
+    <div class="title-container"> 
+        <div style="position: relative;">
+            <img height="200" class="sword-1" width="200" src="sword-burning.gif" alt="burning sword">
+            <img class="sword" height="200" width="200" src="sword-burning.gif" alt="burning sword" style="transform: rotate(90);">
+        </div>
+        <p class="welcome gradient-text">Welcome to</p>
+        <p class="backlog">
+        <img class="sprite" src="idle.gif" alt="Animated sprite" height="80" width="80">
+            Steam Backlog Helper
+        </p>
+    </div>
+    <h3 class="loading-text">Please sign in with Steam to continue<span class="dots"></span></h3>
     <img src="steam-button.png" class="action-button" (click)="signIn()">
 </section>
 

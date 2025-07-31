@@ -70,11 +70,119 @@ video {
     // margin-left: 5em;
     // margin-right: 5em;
     height: 20vh;
-    padding-top: 5em;
+    padding-top: 0em;
     gap: 1em;
-    background-color: black;
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // background-image: url('../../../../public/bg-1.jpg');
+    // background-position: center;
+    // background-size: contain;
+    // background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(216, 2, 79, 1) 28%, rgba(75, 41, 237, 1) 76%, rgba(0, 0, 0, 1) 100%);
 }
 
 .action-button {
     cursor: pointer;
+}
+
+.welcome {
+    font-size: 5em;
+    font-family: 'KnightWarrior', sans-serif;
+    z-index: 0;
+    color: red;
+}
+
+h3 {
+    font-size: 1em;
+    font-family: 'Pixel', sans-serif;
+}
+
+.backlog {
+    font-size: 4em;
+    font-family: 'Pixel', sans-serif;
+    position: relative;
+    letter-spacing: 0.05em;  
+    word-spacing: 0.1em;     
+    line-height: 1.2;       
+    white-space: nowrap;     
+    display: inline-block;   
+    z-index: 1000;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.sprite {
+    position: absolute;
+    top: -1.2em;
+    right: -10px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.dots {
+    font-family: 'Pixel', sans-serif;
+    font-size: 1em;
+}
+
+.dots::after {
+  content: '';
+  display: inline-block;
+  width: 1.2em;
+  text-align: left;
+  animation: dots 2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}
+
+.sword {
+    height: 200px;
+    width: 200px;
+    animation: spin-once 1s linear forwards;
+    transform-origin: center center;
+    position: absolute;
+    left: 0;
+}
+
+@keyframes spin-once {
+    from {
+        // translate
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes spin-once-2 {
+    from {
+        transform: rotate(270deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.sword-1 {
+    animation: spin-once-2 1s linear forwards;
 }

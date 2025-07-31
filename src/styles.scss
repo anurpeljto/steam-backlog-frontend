@@ -32,6 +32,20 @@ html {
 @import "@fontsource/poppins/600.css";
 @import "@fontsource/poppins/700.css";
 
+@font-face {
+  font-family: 'KnightWarrior';
+  src: url('../public/fonts/KnightWarrior-w16n8.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pixel';
+  src: url('../public/fonts/pixel.ttf');
+  // font-weight: normal;
+  // font-style: normal;
+}
+
 
 body {
     padding: 0;
@@ -65,9 +79,17 @@ a {
     --brown: #842A08;
     --green: #08842A;
     --gray: #69686D;
+    --red: #D8024F;
+    --blue: #4B29ED;
+    --background: #1D0F46; 
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html,body {
     overscroll-behavior: none;
+}
+
+p, h1, h2, h3 {
+  padding: 0;
+  margin: 0;
 }
