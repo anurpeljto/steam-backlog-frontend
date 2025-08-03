@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <img src="gallery.jpg" alt="Steam library" class="lib">
+        <img src="pixel-gif.gif" alt="Steam library" class="lib">
     </div>
     <!--  -->
     <div class="top">
@@ -26,10 +26,10 @@
             }
         </div>
         <div class="tags-container">
-            <div class="tag" style="background-color: red;" (click)="queryByFilter(0)">
+            <div class="tag" style="background-color: red; color: black" (click)="queryByFilter(0)">
                 Never played
             </div>
-            <div class="tag" style="background-color: var(--darkerYellow);" (click)="queryByFilter(180)">
+            <div class="tag" style="background-color: hsl(36, 100%, 57%); color: black" (click)="queryByFilter(180)">
                 Less than 3 hours played
             </div>
         </div>
@@ -41,11 +41,11 @@
                     <mat-paginator [length]="total" [pageSize]="50" (page)="onChangePage($event)" [pageSizeOptions]="[25,50,100]"></mat-paginator>
             </div>
         }
-        @if(!dataLoaded) {
-            <div class="spinner">
-                <mat-progress-spinner mode="indeterminate" color="accent" diameter="250"></mat-progress-spinner>
-                <h1>Please bare with us while we fetch your game metadata :)</h1>
-            </div>
-        }
     </div>
+@if(!dataLoaded) {
+        <div class="spinner">
+            <mat-progress-spinner mode="indeterminate" color="accent" diameter="250"></mat-progress-spinner>
+            <h1>Please bare with us while we fetch your game metadata :)</h1>
+        </div>
+    }
 </section>

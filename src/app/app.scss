@@ -10,9 +10,19 @@ nav {
     justify-content: start;
     align-items: center;
     gap: 2em;
-    background-color: transparent;
+    background-color: #ffa726;
     color: white;
-    z-index: 1000;
+    z-index: 1001;
+
+    @media (max-width: 768px){
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    @media (prefers-color-scheme: dark){
+        background-color: #000000;
+        color: #ffa726;
+        border-bottom: 2px solid #ffa726;
+    }
 }
 
 nav > a {

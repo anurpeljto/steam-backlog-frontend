@@ -3,7 +3,7 @@
        [alt]="game.name || 'placeholder for unknown img'">
 
   <div class="details">
-    <strong>{{ game.name || 'Unknown game' }}</strong>
+    <strong class="strong">{{ game.name || 'Unknown game' }}</strong>
 
     <div class="tag-container">
 
@@ -14,11 +14,11 @@
       }
 
       @if (game.playtime_minutes === 0) {
-        <div class="tag" style="background-color: red;">Never played</div>
+        <div class="tag" style="background-color: red; color: black;">Never played</div>
       }
 
       @if (game.playtime_minutes > 0 && game.playtime_minutes <= 180) {
-        <div class="tag" style="background-color: var(--darkerYellow);">Less than 3hr played</div>
+        <div class="tag" style="background-color: #ffa726; color: black;">Less than 3hr played</div>
       }
 
       @if (game.genres?.length) {

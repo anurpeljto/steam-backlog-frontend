@@ -9,19 +9,6 @@
     object-position: top;
 }
 
-.greeting {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(1px);
-    max-height: 500px;
-    max-width: 500px;
-    padding: 1rem;
-}
-
 .main-content {
     display: flex;
     flex-direction: column;
@@ -52,6 +39,9 @@
 h3 {
     font-size: 1em;
     font-family: 'Pixel', sans-serif;
+    @media (max-width: 768px){
+        font-size: 0.8em;
+    }
 }
 
 .backlog {
@@ -65,6 +55,9 @@ h3 {
     display: inline-block;   
     z-index: 1000;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    @media (max-width: 768px){
+        font-size: 1em;
+    }
 }
 
 .title-container {
@@ -80,8 +73,13 @@ h3 {
     position: absolute;
     top: -1.2em;
     right: -10px;
-    image-rendering: pixelated;
     image-rendering: crisp-edges;
+    @media (max-width: 768px) {
+        top: -0.5em;
+        right: -2em !important;
+        max-height: 2em;
+        max-width: 2em;
+    }
 }
 
 .dots {

@@ -19,12 +19,12 @@ html {
   // Default the application to a light color theme. This can be changed to
   // `dark` to enable the dark color theme, or to `light dark` to defer to the
   // user's system settings.
-  color-scheme: light;
+  color-scheme: inherit;
 
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
+  // background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 }/* You can add global styles to this file, and also import other style files */
@@ -51,7 +51,6 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: black;
     color: white;
     overscroll-behavior: none;
 }
@@ -82,8 +81,26 @@ a {
     --red: #D8024F;
     --blue: #4B29ED;
     --background: #1D0F46; 
+    --forestGreen: #27513F;
+    --mossGreen: #7CC56B;
+    --skyBlue: #7AA3C5; 
+    --mutedBrown: #5E3C28;
+    --warmBeige: #E2B67B;
+    --accentRed: #C0322A;
+
+    --dark-bg-dark: hsl(0, 0%, 0%);
+    --dark-bg: hsl(0, 0%, 5%);
+    --dark-bg-light: hsl(0, 0%, 10%);
+    --dark-text: hsl(0, 0%, 95%);
+    --dark-text-muted: hsl(0, 0%, 70%);
+
+    --light-bg-light: hsl(0, 0%, 100%);
+    --light-bg: hsl(0, 0%, 95%);
+    --light-bg-dark: hsl(0, 0%, 90%);
+    --light-text: hsl(0, 0%, 5%);
+    --light-text-muted: hsl(0, 0%, 30%);
 }
-html, body { height: 100%; }
+html, body { height: 100%}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html,body {
     overscroll-behavior: none;
