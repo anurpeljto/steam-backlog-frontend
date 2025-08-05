@@ -10,11 +10,11 @@
       @if (game.iscompleted) {
         <div class="tag" style="background-color: var(--green);">Completed</div>
       } @else {
-        <div class="tag" style="background-color: var(--brightPurple);">Not completed</div>
+        <div class="tag" style="background-color: #9060b4; color: black;">Not completed</div>
       }
 
       @if (game.playtime_minutes === 0) {
-        <div class="tag" style="background-color: red; color: black;">Never played</div>
+        <div class="tag" style="background-color: hsl(0, 99%, 59%); color: black;">Never played</div>
       }
 
       @if (game.playtime_minutes > 0 && game.playtime_minutes <= 180) {
@@ -46,7 +46,7 @@
       <div class="completed">
         <p>Playtime: {{ (game.playtime_minutes / 60).toFixed(2) }}h</p>
         <p>Completed: {{ game.iscompleted ? '✅' : '❌' }}</p>
-        <p>Time to complete: {{ game.main_story === 0 ? `No information currently` : `${game.main_story / 3600}h`}}</p>
+        <p>Time to complete: {{ game.main_story ? `${game.main_story}h` : `No information available`}}</p>
       </div>
       <div class="buttons">
           <div class="action-button"><fa-icon [icon]="faCheck" matTooltip="Mark finished"></fa-icon></div>

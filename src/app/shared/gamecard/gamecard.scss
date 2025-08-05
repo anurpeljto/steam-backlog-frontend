@@ -9,13 +9,13 @@
 .details {
     display: flex;
     flex-direction: column;
-    background-color: #402805;
+    background-color: hsl(171, 92%, 28%);
     padding: 1em;
     border-radius: 5px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     gap: 0.5em;
-    color: #ffa726;
+    color: black;
     @media (prefers-color-scheme: dark){
         color: hsl(0, 0%, 70%);
         background-color: hsl(0, 0, 10%);
@@ -23,9 +23,7 @@
 }
 
 .details > .strong {
-    @media (prefers-color-scheme: dark) {
-        color: white;
-    }
+    color: white;
 }
 
 img {
@@ -42,9 +40,10 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffa726;
+    color: white;
     padding: 5px;
     border-radius: 5px;
+    background-color: hsl(171, 92%, 38%);
     @media (prefers-color-scheme: dark){
         background-color: hsl(0, 0%, 20%);
         color: hsl(36, 100, 57)
@@ -88,8 +87,13 @@ img {
 
 .tag.more {
     // background-color: var(--) !important;
-    background-color: hsl(93, 88, 27);
-    color: hsl(0, 0%, 15%);   
+    background-color: hsl(36, 100%, 57%);
+    color: black;
+
+    @media (prefers-color-scheme: dark){
+        background-color: hsl(93, 88, 27);
+        color: hsl(0, 0%, 15%);   
+    }
 }
 
 .tag.less {
