@@ -15,5 +15,10 @@ export const routes: Routes = [
         path: 'dashboard',
         loadComponent: () => 
             import('./pages/callback/callback').then(m=>m.Callback)
+    },
+    {
+        path: 'recommended',
+        loadComponent: () =>
+            import('./pages/recommended/recommended').then(m => m.Recommended)
     }
 ];

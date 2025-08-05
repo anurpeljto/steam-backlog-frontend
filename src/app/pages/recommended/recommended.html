@@ -1,0 +1,32 @@
+<section class="main-container">
+    <div class="random">
+        <video class="gif" src="pixel-2.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+            <h2>Not sure what to pick?</h2>
+            <a href="roulette" class="button">
+                <h2>Try the Backlog Roulette!</h2>
+            </a>
+    </div>
+    </div>
+    <div class="top">
+        <div class="picks">
+            <h1>Top picks for you.</h1>
+            <mat-form-field appearance="fill">
+                <mat-label>Number of recommendations</mat-label>
+                <mat-select [(value)]="amount" (valueChange)="fetchGames(amount)">
+                    @for (option of options; track $index) {
+                        <mat-option [value]="option">
+                            {{option}}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <p style="color: hsl(36, 100%, 47%);">Ordered picks based on your favorite genres and community reviews.</p>
+        <div class="games-container">
+                @for (game of games; track $index) {
+                    <app-gamecard [game]="game"></app-gamecard>
+                }
+            </div>
+    </div>
+</section>

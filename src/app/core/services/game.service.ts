@@ -26,4 +26,16 @@ export class GameService {
   fetchGenres(steam_id: string | undefined){
     return this.http.get<any>(`http://localhost:3000/user-search/games/${steam_id}/genres`);
   }
+
+  fetchRecommended(steamid: string, amount: number = 10) {
+    return this.http.get<any>(`http://localhost:3000/user-search/games/${steamid}/recommended`, {
+      params: {
+        amount: amount
+      }
+    }).pipe(
+      map(
+        res => res
+      )
+    );
+  }
 }

@@ -23,19 +23,19 @@
 
       @if (game.genres?.length) {
         @for (genre of game.genres; track $index) {
-          <div class="tag" (click)="action(genre)">{{ genre }}</div>
+          <div class="tag" (click)="action?.(genre)">{{ genre }}</div>
         }
       }
 
       @if (game.categories?.length) {
         @if (game.expanded) {
           @for (cat of game.categories; track $index) {
-            <div class="tag" (click)="category(cat)">{{ cat }}</div>
+            <div class="tag" (click)="category?.(cat)">{{ cat }}</div>
           }
           <div class="tag less" (click)="game.expanded = false">Show less</div>
         } @else {
           @for (cat of game.categories.slice(0,2); track $index) {
-            <div class="tag" (click)="category(cat)">{{ cat }}</div>
+            <div class="tag" (click)="category?.(cat)">{{ cat }}</div>
           }
           <div *ngIf="game.categories.length > 2" class="tag more" (click)="game.expanded = true">More tags...</div>
         }

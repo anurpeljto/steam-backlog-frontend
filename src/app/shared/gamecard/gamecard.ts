@@ -12,8 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 export class Gamecard {
   @Input() game: any;
-  @Input() action!: (genre: string) => void;
-  @Input() category!: (category: string) => void;
+  @Input() action?: (genre: string) => void;
+  @Input() category?: (category: string) => void;
   faCheck = faCheck;
   faBan = faBan;
 }
