@@ -1,3 +1,20 @@
+@media (prefers-color-scheme: dark){
+  .main-container {
+    background: #FFA726;
+    color: black;
+  }
+
+  .top {
+    background-color: var(--dark-bg-dark);
+    color: #ffa726;
+  }
+
+  .button {
+      background-color: hsl(171, 92%, 38%);
+      color: white;
+  }
+}
+
 .main-container {
     color: black;
     min-height: 100vh;
@@ -6,21 +23,13 @@
     flex-direction: column;
     background-color: hsl(171, 92%, 28%);
     color: #fff8f0;
-    @media (prefers-color-scheme: dark){
-        background: #FFA726;
-        color: black;
-    }
 }
 
 .content {
     flex-direction: column;
     gap: 1.5em;
     justify-content: center;
-    // margin-left: 5em;
-    padding-left: 5em;
-    padding-right: 5em;
-    // margin-right: 5em;
-    padding-top: 2em;
+    padding: 2em 5em;
     border-radius: 10px;
 }
 
@@ -28,10 +37,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5em;
-    padding-left: 5em;
-    padding-right: 5em;
-    padding-top: 5em;
-    padding-bottom: 2em;
+    padding: 5em 5em 2em;
     border-radius: 10px;
     @media (max-width: 1536px) {
         padding-left: 3em;
@@ -39,10 +45,6 @@
     }
     background-color: hsl(36, 100%, 45%);
     color: black;
-    @media (prefers-color-scheme: dark){
-        background-color: var(--dark-bg-dark);
-        color: #ffa726;
-    }
     min-height: 100vh;
 }
 
@@ -71,8 +73,7 @@
     align-self: center;
     justify-content: center;
     position: relative;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding: 2em 0;
 }
 
 .random > h2 {
@@ -85,11 +86,6 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-
-    @media (prefers-color-scheme: dark){
-        background-color: hsl(171, 92%, 38%);
-        color: white;
-    }
 }
 
 .gif {

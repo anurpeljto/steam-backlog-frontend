@@ -1,3 +1,69 @@
+@media (prefers-color-scheme: dark){
+    .main-container {
+        background: #FFA726;
+        color: black;
+        background: linear-gradient(180deg, rgba(255, 167, 38, 1) 0%, rgba(0, 0, 0, 1) 71%);
+    }
+
+    .user {
+        background-color: hsl(0, 0%, 10%);
+        color: white;
+
+        & a {
+            color: hsl(0, 0%, 70%);
+        }
+        & p {
+            color: hsl(0, 0%, 90%);
+        }
+    }
+
+    #share {
+        background-color: hsl(0, 0%, 50%) ;
+        color: white;
+    }
+
+    mat-paginator {
+        background-color: #1e1e1e !important;
+    }
+
+    .tag {
+        background-color: hsl(0, 0%, 20%);
+        color: hsl(36, 100%, 57%);
+
+        &:hover {
+            background: hsl(0, 0%, 30%);
+        }
+    }
+
+    .top {
+        background-color: var(--dark-bg-dark);
+        color: #ffa726;
+    }
+
+    ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled {
+        background-color: black !important;
+        color: #FFA726 !important;
+    }
+
+    ::ng-deep .mat-mdc-input-element {
+        color: #FFA726 !important;
+    }
+
+    ::ng-deep .mat-mdc-floating-label {
+        color: #ccc !important;
+    }
+
+    ::ng-deep .mat-mdc-input-element::placeholder {
+        color: #888 !important;
+    }
+
+    ::ng-deep .mdc-line-ripple::after,
+    ::ng-deep .mdc-line-ripple::before {
+        border-bottom-color: #ff9800 !important;
+    }
+}
+
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -6,14 +72,7 @@
     padding-top: 3em;
     gap: 3.5em;
     color: #fff8f0;
-    // background-color: hsl(32, 100%, 97%);
     background-color: hsl(171, 92%, 28%);
-
-    @media (prefers-color-scheme: dark){
-        background: #FFA726;
-        color: black;
-        background: linear-gradient(180deg, rgba(255, 167, 38, 1) 0%, rgba(0, 0, 0, 1) 71%);
-    }
 }
 
 .profile-container {
@@ -24,17 +83,17 @@
     justify-content: center;
     align-items: stretch;
     max-height: 300px;
-    max-width: 650px;
+    max-width: 700px;
 }
 
 .icon {
-    height: 148px;
-    width: 148px;
+    height: 120px;
+    width: 120px;
     border-radius: 100px;
 }
 
 .user {
-    flex: 1;
+    flex: 0.7;
     display: flex;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -45,21 +104,14 @@
     padding: 2rem;
     gap: 0.5em;
     background-color: hsl(171, 92%, 38%);
-
-    @media (prefers-color-scheme: dark){
-        // background-color: hsl(36 100% 57.5%);
-        background-color: hsl(0, 0%, 10%);
-        color: white;
-        // color: hsl(0 0% 70%)
-    }
 }
 
 .user > a {
     color: hsl(0, 0%, 95%);
+}
 
-    @media (prefers-color-scheme: dark){
-        color: hsl(0, 0%, 70%);
-    }
+.user > p {
+    color: hsl(0, 0%, 95%);
 }
 
 .button-container {
@@ -67,7 +119,6 @@
     display: flex;
     align-items: center;
     gap: 0.5em; 
-    // justify-content: space-between;
 }
 
 .button {
@@ -75,10 +126,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding: 0.5em 1.5em;
     cursor: pointer;
     margin-top: 15px;
     color: black;
@@ -90,16 +138,11 @@
 
 #share {
     background-color: white;
-    @media (prefers-color-scheme: dark){
-        background-color: hsl(0, 0%, 0%) ;
-        color: white;
-    }
 }
 
 
 .lib {
     flex: 1;
-    // height: auto;
     object-fit: cover;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -128,20 +171,14 @@ mat-paginator {
     bottom: 0;
     grid-column: 1 / -1;
     width: calc(100% + 10em);
-    margin-left: -5em;       
-    margin-right: -5em;    
+    margin: 0em -5em;    
     @media (max-width: 1536px){
         width: calc(100% + 6em);
-        margin-left: -3em;
-        margin-right: -3em;
+        margin: 0em -3em;
     }   
     justify-self: stretch;
     justify-content: center;
     background-color: hsl(171, 92%, 38%);
-    
-    @media (prefers-color-scheme: dark){
-        background-color: #1e1e1e !important;
-    }
 
     color: white;
     font-size: 1em;
@@ -167,18 +204,11 @@ mat-paginator {
     cursor: pointer;
     font-weight: 500;
     background-color: hsl(0, 0%, 95%);
-    @media (prefers-color-scheme: dark){
-        background-color: hsl(0, 0%, 20%);
-        color: hsl(36, 100%, 57%);
-    }
 }
 
 .tag:hover {
     background: #ffa726;
     background: radial-gradient(white, #ffa726);
-    @media (prefers-color-scheme: dark){
-        background: hsl(0, 0%, 30%);
-    }
 }
 
 .tags-container {
@@ -193,23 +223,16 @@ mat-paginator {
     flex-direction: column;
     gap: 1.5em;
     justify-content: center;
-    // margin-left: 5em;
-    padding-left: 5em;
-    padding-right: 5em;
-    // margin-right: 5em;
-    padding-top: 2em;
+    padding: 2em 5em;
     border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
     @media (max-width: 1536px) {
-        padding-left: 3em;
-        padding-right: 3em;
+        padding: 2em 3em;
     }
 
     background-color: hsl(36, 100%, 45%);
     color: black;
-    @media (prefers-color-scheme: dark){
-        background-color: var(--dark-bg-dark);
-        color: #ffa726;
-    }
 }
 
 .spinner {
@@ -220,4 +243,21 @@ mat-paginator {
     gap: 1em;
     padding: 1em;
     align-self: center;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled {
+    max-width: 450px !important;
+}
+
+::ng-deep .mat-mdc-input-element {
+}
+
+::ng-deep .mat-mdc-floating-label {
+}
+
+::ng-deep .mat-mdc-input-element::placeholder {
+}
+
+::ng-deep .mdc-line-ripple::after,
+::ng-deep .mdc-line-ripple::before {
 }

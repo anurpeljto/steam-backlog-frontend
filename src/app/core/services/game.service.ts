@@ -38,4 +38,18 @@ export class GameService {
       )
     );
   }
+
+  searchGames(steamid: string | undefined, search: string, page: number, size: number){
+    return this.http.get<any>(`http://localhost:3000/user-search/games/${steamid}/search`, {
+      params: {
+        search,
+        page,
+        size
+      }
+    }).pipe(
+      map(res => {
+        return res
+      })
+    );
+  }
 }

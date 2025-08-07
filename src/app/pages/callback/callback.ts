@@ -3,11 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { interval, Subscription, switchMap } from 'rxjs';
+import { debounceTime, interval, Subject, Subscription, switchMap } from 'rxjs';
 import { Gamecard } from '../../shared/gamecard/gamecard';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { GameService } from '../../core/services/game.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormField, MatLabel } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 type SteamJwtPayload = {
   steam_id: string;
@@ -20,7 +22,7 @@ type SteamJwtPayload = {
 
 @Component({
   selector: 'app-callback',
-  imports: [FontAwesomeModule, Gamecard, MatPaginatorModule, MatProgressSpinnerModule],
+  imports: [FontAwesomeModule, Gamecard, MatPaginatorModule, MatProgressSpinnerModule, MatFormField, MatLabel, MatInputModule],
   templateUrl: './callback.html',
   styleUrl: './callback.scss'
 })
@@ -40,6 +42,8 @@ export class Callback implements OnInit{
   size: number = 50;
   genres: any | null = null;
   dataLoaded: boolean = false;
+  search: string = '';
+  private searchSubject = new Subject<string>();
   private pollSub?: Subscription;
 
   faSteam = faSteam;
@@ -91,6 +95,20 @@ export class Callback implements OnInit{
 
     const split = this.profileUrl?.split('/');
     if (split) this.profileUrlName = split[split.length - 2];
+
+    this.searchSubject.pipe(
+      debounceTime(300),
+      switchMap(query => {
+        this.dataLoaded = false;
+        this.page = 0;
+        this.size = 20;
+        return this.gameService.searchGames(this.steam_id, query, this.page, this.size);
+      })
+    ).subscribe(sub => {
+      this.games = sub.games;
+      this.total = sub.total;
+      this.dataLoaded = true;
+    });
   }
 
   async triggerSteamSync() {
@@ -196,6 +214,13 @@ export class Callback implements OnInit{
     this.page = 0;
     this.size = 50;
     return this.loadGameDataFromDb(this.page, this.size, undefined, undefined, category);
+  }
+
+  onSearchChange(event: any) {
+    this.dataLoaded = false;
+    this.page = 0;
+    this.size = 20;
+    this.searchSubject.next(event.target.value);
   }
 
   ngOnDestroy(): void {

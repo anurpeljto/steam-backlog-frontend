@@ -4,6 +4,7 @@
             <img [src]="avatar" alt="avatar" class="icon"/>
             <h1>{{personaname}}</h1>
             <a [href]="profileUrl"><fa-icon [icon]="faSteam"></fa-icon> {{profileUrlName}}</a>
+            <p>Welcome to my profile! I'm here to clear my backlog and discover new games.</p>
             <div class="button-container">
                 <div class="button" id="edit">
                     Edit profile
@@ -18,6 +19,10 @@
     <!--  -->
     <div class="top">
         <p class="title">Your games</p>
+        <mat-form-field>
+                <mat-label>Search</mat-label>
+                <input matInput placeholder="Ex. The Witcher 3" [value]="search" (input)="onSearchChange($event)">
+            </mat-form-field>
         <div class="tags-container">
             @for (genre of genres; track $index) {
                 <div class="tag" (click)="queryByGenre(genre.genre)">

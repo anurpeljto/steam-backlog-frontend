@@ -29,21 +29,6 @@
     cursor: pointer;
 }
 
-.welcome {
-    font-size: 5em;
-    font-family: 'KnightWarrior', sans-serif;
-    z-index: 0;
-    color: red;
-}
-
-h3 {
-    font-size: 1em;
-    font-family: 'Pixel', sans-serif;
-    @media (max-width: 768px){
-        font-size: 0.8em;
-    }
-}
-
 .backlog {
     font-size: 4em;
     font-family: 'Pixel', sans-serif;
@@ -108,36 +93,4 @@ h3 {
   80%, 100% {
     content: '...';
   }
-}
-
-.sword {
-    height: 200px;
-    width: 200px;
-    animation: spin-once 1s linear forwards;
-    transform-origin: center center;
-    position: absolute;
-    left: 0;
-}
-
-@keyframes spin-once {
-    from {
-        // translate
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(270deg);
-    }
-}
-
-@keyframes spin-once-2 {
-    from {
-        transform: rotate(270deg);
-    }
-    to {
-        transform: rotate(0deg);
-    }
-}
-
-.sword-1 {
-    animation: spin-once-2 1s linear forwards;
 }
