@@ -1,17 +1,17 @@
 @media (prefers-color-scheme: dark){
   .main-container {
-    background: #FFA726;
-    color: black;
+    background: #FFA726 !important;
+    color: black !important;
   }
 
   .top {
-    background-color: var(--dark-bg-dark);
-    color: #ffa726;
+    background-color: var(--dark-bg-dark) !important;
+    color: #ffa726 !important;
   }
 
   .button {
-      background-color: hsl(171, 92%, 38%);
-      color: white;
+      background-color: hsl(171, 92%, 38%) !important;
+      color: white !important;
   }
 }
 
