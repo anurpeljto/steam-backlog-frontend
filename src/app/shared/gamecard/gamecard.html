@@ -44,13 +44,14 @@
 
     <div class="completed-info">
       <div class="completed">
-        <p>Playtime: {{ (game.playtime_minutes / 60).toFixed(2) }}h</p>
-        <p>Completed: {{ game.iscompleted ? '✅' : '❌' }}</p>
-        <p>Time to complete: {{ game.main_story ? `${game.main_story}h` : `No information available`}}</p>
+        <p style="padding-bottom: 1em;">{{game.description && game.description.slice(0, 150)}}...</p>
+        <p><span style="color: hsl(0, 0%, 90%)">Playtime: </span>{{ (game.playtime_minutes / 60).toFixed(2) }}h</p>
+        <p><span style="color: hsl(0, 0%, 90%)">Completed: </span>{{ game.iscompleted ? '✅' : '❌' }}</p>
+        <p><span style="color: hsl(0, 0%, 90%)">Time To Complete: </span>{{ game.main_story ? `${game.main_story}h` : `No information available`}}</p>
       </div>
       <div class="buttons">
-          <div class="action-button"><fa-icon [icon]="faCheck" matTooltip="Mark finished"></fa-icon></div>
-          <div class="action-button"><fa-icon [icon]="faBan" matTooltip="Mark not finished"></fa-icon></div>
+          <div class="action-button"><fa-icon [icon]="faCheck" matTooltip="Mark finished" style="color: white; fill: white;"></fa-icon></div>
+          <div class="action-button"><fa-icon [icon]="faBan" matTooltip="Mark not finished" style="color: white; fill: white;"></fa-icon></div>
         </div>
     </div>
 
