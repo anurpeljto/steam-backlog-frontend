@@ -24,7 +24,7 @@ export class ProfileIcon implements OnInit{
   faUserFriends = faUserFriends;
   faRankingStar = faRankingStar;
   faSignOut = faSignOut;
-  
+
   constructor(
     private router: Router
   ){}
@@ -40,5 +40,10 @@ export class ProfileIcon implements OnInit{
 
   toggleMenu(){
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  logOut() {
+    localStorage.clear();
+    window.location.href = '';
   }
 }

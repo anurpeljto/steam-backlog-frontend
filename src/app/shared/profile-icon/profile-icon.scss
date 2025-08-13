@@ -47,7 +47,8 @@
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.sub-menu a {
+.sub-menu a,
+.sub-menu p {
     opacity: 0;
     transform: translateY(-10px);
     transition: all 0.3s ease-in-out;
@@ -66,7 +67,8 @@
     pointer-events: auto;
 }
 
-.sub-menu.open a{
+.sub-menu.open a,
+.sub-menu.open p{
     opacity: 1;
     transform: translateY(0);
     // pointer-events: auto;
@@ -77,7 +79,26 @@
 .sub-menu.open a:nth-child(3) { transition-delay: 0.1s; }
 .sub-menu.open a:nth-child(4) { transition-delay: 0.15s; }
 .sub-menu.open a:nth-child(5) { transition-delay: 0.2s; }
+.sub-menu.open p { transition-delay: 0.25s; }
 
 .sub-menu.open {
     pointer-events: auto;
 }
+
+p {
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    transition: 0.3s all ease-in-out;
+}
+
+p:hover {
+    color: #ff9800;
+    @media (prefers-color-scheme: dark){
+        color: white;
+    }
+}
+
