@@ -20,5 +20,10 @@ export const routes: Routes = [
         path: 'recommended',
         loadComponent: () =>
             import('./pages/recommended/recommended').then(m => m.Recommended)
+    },
+    {
+        path: '**',
+        loadComponent: () => 
+            import('./pages/not-found/not-found').then(m => m.NotFound)
     }
 ];

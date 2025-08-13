@@ -27,6 +27,8 @@ html {
   // background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }/* You can add global styles to this file, and also import other style files */
 @import "@fontsource/poppins";
 @import "@fontsource/poppins/600.css";
@@ -46,6 +48,9 @@ html {
   // font-style: normal;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
 
 body {
     padding: 0;

@@ -3,10 +3,11 @@ import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/rout
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSteam } from '@fortawesome/free-brands-svg-icons';
 import { filter, Subscription } from 'rxjs';
+import { ProfileIcon } from "./shared/profile-icon/profile-icon";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FontAwesomeModule, RouterModule],
+  imports: [RouterOutlet, FontAwesomeModule, RouterModule, ProfileIcon],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

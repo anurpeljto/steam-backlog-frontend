@@ -3,13 +3,12 @@ nav {
     position: sticky;
     top: 0;
     left: 0;
-    padding-top: 2em;
+    padding-top: 1.5em;
     padding-left: 5em;
     padding-right: 5em;
-    padding-bottom: 2em;
-    justify-content: start;
+    padding-bottom: 1.5em;
+    justify-content: space-between;
     align-items: center;
-    gap: 2em;
     background-color: hsl(36, 100%, 45%);
     border-bottom: 2px solid black;
     color: white;
@@ -20,13 +19,16 @@ nav {
         padding-right: 2em;
     }
     @media (prefers-color-scheme: dark){
-        background-color: #000000;
+        background-color: hsl(0, 0%, 5%);
         color: #ffa726;
         border-bottom: 2px solid #ffa726;
     }
 }
 
-nav > a {
+nav > div {
+    display: flex;
+    align-items: center;
+    gap: 2em;
     font-size: large;
 }
 
@@ -38,7 +40,7 @@ nav > a {
     transform-origin: left;
 }
 
-nav > a:hover > .line {
+nav > div > a:hover > .line {
     background-color: #FFA726;
     animation: appear 0.3s linear forwards;
 }

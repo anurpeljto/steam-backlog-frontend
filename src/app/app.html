@@ -1,14 +1,18 @@
 <nav [class.home]="isHome">
-    <a href="">
-        <img src="colored-logo.png" alt="logo" height="30" width="30">
-        <div class="line"></div>
-    </a>
-    <a href="">
-        <span>Dashboard</span>
-        <div class="line"></div>
-    </a>
-    <a href="recommended">Top Picks For You
-        <div class="line"></div>
-    </a>
+    <div>
+        <a href="">
+            <img src="colored-logo.png" alt="logo" height="30" width="30">
+            <div class="line"></div>
+        </a>
+        <a href="">
+            <span>Dashboard</span>
+            <div class="line"></div>
+        </a>
+        <a href="recommended">Top Picks For You
+            <div class="line"></div>
+        </a>
+    </div>
+
+    <app-profile-icon></app-profile-icon>
 </nav>
 <router-outlet />
