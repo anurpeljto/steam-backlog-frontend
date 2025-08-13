@@ -1,0 +1,40 @@
+<section>
+    <div class="top-part">
+        <h1>{{gameData?.name}}</h1>
+        <div class="gallery-highlight">
+            @if(highlightedMedia && highlightedMedia.split('.').pop() !== '.mp4'){
+                <img [src]="highlightedMedia" [alt]="highlightedMedia">
+            }
+            @else {
+                <video [src]="highlightedMedia"></video>
+            }
+            <app-gallery [images]="[highlightedMedia!, highlightedMedia!,highlightedMedia!,highlightedMedia!,highlightedMedia!,]"></app-gallery>
+        </div>
+    </div>
+    <div class="details">
+        <div class="left-part">
+            <div class="description">
+                <h2>Game Description</h2>
+                <p>{{gameData?.description}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab atque minus aspernatur ut tenetur cupiditate deserunt aperiam possimus ex eum non, architecto modi, expedita animi laborum cumque, libero voluptates assumenda?</p>
+            </div>
+            <div class="tags">
+                @for (tag of gameData?.genres; track $index) {
+                    <div class="tag">
+                        {{tag}}
+                    </div>
+                }
+                @for (category of gameData?.categories; track $index) {
+                    <div class="tag">{{category}}</div>
+                }
+            </div>
+        </div>
+
+        <div class="right-part">
+            <div class="time-to-beat">
+                <h2>Time To Beat</h2>
+                <p>{{gameData!.name}} takes <strong>{{gameData?.hltb_main_story}}</strong> hours to complete on average, as reported by RAWG. <br> So far, you have played {{(userGameData.playtime_minutes / 60).toFixed(2)}} hours which is {{completionPercentage!.toFixed(2)}}% !</p>
+            </div>
+            <div class="reviews"></div>
+        </div>
+    </div>
+</section>

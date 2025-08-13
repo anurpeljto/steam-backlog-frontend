@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import axios from 'axios';
+import MetaData from '../interfaces/metadata.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,20 @@ export class GameService {
         return res
       })
     );
+  }
+
+  getGameMetadata(appid: string | null, steamid?: string){
+    return this.http.get<{ metadata: MetaData, userData: any}>(`http://localhost:3000/user-search/game/${appid}`,
+      {
+        params: {
+          steamid: steamid ?? ''
+        }
+      }
+    )
+      .pipe(
+        map(res => {
+          return res
+        })
+      );
   }
 }

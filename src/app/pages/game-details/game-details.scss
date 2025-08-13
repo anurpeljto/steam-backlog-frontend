@@ -1,0 +1,114 @@
+section {
+    padding: 2em 5em;
+    min-height: 100vh;
+    position: relative;
+    background-color: black;
+    display: grid;
+    grid-template-rows: 0.8fr, 1fr;
+    gap: 2em;
+}
+
+.top-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.gallery-highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // width: 100%;
+    gap: 0.5em;
+    padding: 2em 2em;
+    
+    @media (prefers-color-scheme: dark){
+        background-color: hsl(0, 0%, 10%);
+        border-radius: 15px;
+    }
+}
+
+img,
+video {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: orange;
+    font-size: 1.1em;
+}
+
+.left-part,
+.right-part {
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    padding: 1em;
+}
+
+.left-part {
+    background-color: hsl(0,0, 10%);
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    & {
+        > h2 {
+            @media (prefers-color-scheme: dark){
+                color: hsl(0, 0%, 80%)
+            }
+        }
+
+        > p {
+            @media(prefers-color-scheme: dark){
+                color: hsl(0, 0%, 60%);
+            }
+        }
+    }
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    background-color: hsl(0, 0%, 95%);
+
+    background-color: hsl(0, 0%, 20%) !important;
+        color: hsl(36, 100%, 57%) !important;
+
+        &:hover {
+            background: hsl(0, 0%, 30%) !important;
+        }
+}
+
+.tags {
+    padding-top: 1em;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.right-part {
+    background-color: hsl(0, 0%, 5%);
+    color: #ff9800;
+}
+
+.time-to-beat {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}

@@ -6,6 +6,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error: HttpErrorResponse) => {
       if(error.status === 401){
         alert('You are not logged in! Redirecting...');
+        localStorage.clear();
         window.location.href=''
       }
       return throwError(() => error);

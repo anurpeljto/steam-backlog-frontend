@@ -22,6 +22,16 @@ export const routes: Routes = [
             import('./pages/recommended/recommended').then(m => m.Recommended)
     },
     {
+        path: 'game',
+        children: [
+            {
+                path: ':id',
+                loadComponent: () =>
+                    import('./pages/game-details/game-details').then(m => m.GameDetails)
+            }
+        ]
+    },
+    {
         path: '**',
         loadComponent: () => 
             import('./pages/not-found/not-found').then(m => m.NotFound)

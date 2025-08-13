@@ -4,6 +4,18 @@
     @media (max-width: 1280px){
         max-width: 400px;
     }
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    .details {
+        background-color: hsl(171, 92%, 38%);
+
+        @media (prefers-color-scheme: dark){
+            color: hsl(0, 0%, 70%);
+            background-color: hsl(0, 0, 15%);
+        }
+    }
 }
 
 .details {
