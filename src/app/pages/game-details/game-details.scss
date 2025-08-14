@@ -27,12 +27,12 @@ section {
         background-color: hsl(0, 0%, 10%);
         border-radius: 15px;
     }
-}
 
-img,
-video {
-    max-width: 500px;
-    max-height: 500px;
+    & > img,
+    > video {
+        max-width: 800px !important;
+        // max-height: 100px !important;
+    }
 }
 
 .details {
@@ -45,8 +45,8 @@ video {
 .left-part,
 .right-part {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    max-width: 650px;
     padding: 1em;
 }
 

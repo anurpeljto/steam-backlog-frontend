@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 export class Gallery {
 
   @Input('images') images: string[] = [];
+  @Input('setHighlight') setHighlight?: (image: string) => void;
 }

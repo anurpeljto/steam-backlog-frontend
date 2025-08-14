@@ -1,6 +1,6 @@
 <div class="row">
     @for (image of images; track $index) {
-        <div class="img-box">
+        <div class="img-box" (click)="setHighlight && setHighlight(image)">
             <img [src]="image" alt="Picture of game">
         </div>
     }
