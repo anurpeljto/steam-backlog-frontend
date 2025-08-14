@@ -6,6 +6,9 @@
     scroll-snap-type: x mandatory;
     max-width: 800px;
     padding: 0.5rem;
+    position: relative;
+    z-index: 0;
+    scroll-behavior: smooth;
   }
 
 .img-box {
@@ -24,4 +27,29 @@
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+.left {
+  position: absolute;
+  background-color: #ff9800;
+  z-index: 1;
+  padding: 0.5em;
+  // opacity: 0.8;
+  left: 3;
+  top: 40%;
+}
+
+.right {
+  position: absolute;
+  background-color: #ff9800;
+  z-index: 1;
+  padding: 0.5em;
+  // opacity: 0.8;
+  right: 0;
+  top: 40%;
+}
+
+.row-wrapper {
+  position: relative;
+  max-width: 800px;
 }

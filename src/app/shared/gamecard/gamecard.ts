@@ -3,6 +3,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { faCheck, faBan } from '@fortawesome/free-solid-svg-icons';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gamecard',
@@ -16,4 +17,12 @@ export class Gamecard {
   @Input() category?: (category: string) => void;
   faCheck = faCheck;
   faBan = faBan;
+
+  constructor(
+    private router: Router
+  ){}
+
+  goToDetails(){
+    this.router.navigate(['/game', this.game.appid]);
+  }
 }

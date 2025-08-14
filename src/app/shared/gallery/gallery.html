@@ -1,7 +1,17 @@
-<div class="row">
+<div class="row-wrapper">
+  <div class="left" (click)="scrollLeft()">
+    <fa-icon [icon]="faLeft"></fa-icon>
+  </div>
+
+  <div class="row" #scrollRow>
     @for (image of images; track $index) {
-        <div class="img-box" (click)="setHighlight && setHighlight(image)">
-            <img [src]="image" alt="Picture of game">
-        </div>
+      <div class="img-box" (click)="setHightlight(image)">
+        <img [src]="image.path_thumbnail" alt="Picture of game">
+      </div>
     }
+  </div>
+
+  <div class="right" (click)="scrollRight()">
+    <fa-icon [icon]="faRight"></fa-icon>
+  </div>
 </div>

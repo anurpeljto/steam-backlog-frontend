@@ -1,3 +1,5 @@
+import { Screenshot } from "./screenshot.interface";
+
 export default interface MetaData {
     appid: number;
     genres: string[];
@@ -10,4 +12,5 @@ export default interface MetaData {
     name: string;
     header_image: string;
     rating?: number | null;
+    screenshots: Screenshot[]
 }

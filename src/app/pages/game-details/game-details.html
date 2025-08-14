@@ -3,12 +3,12 @@
         <h1>{{gameData?.name}}</h1>
         <div class="gallery-highlight">
             @if(highlightedMedia && highlightedMedia.split('.').pop() !== '.mp4'){
-                <img [src]="highlightedMedia" [alt]="highlightedMedia">
+                <img class="highlight" [src]="highlightedMedia" [alt]="highlightedMedia">
             }
             @else {
                 <video [src]="highlightedMedia"></video>
             }
-            <app-gallery [images]="[highlightedMedia!, highlightedMedia!,highlightedMedia!,highlightedMedia!,highlightedMedia!,]" [setHighlight]="setHighlight"></app-gallery>
+            <app-gallery [images]="media" (clickedEmitter)="setHighlight($event)"></app-gallery>
         </div>
     </div>
     <div class="details">
@@ -32,7 +32,12 @@
         <div class="right-part">
             <div class="time-to-beat">
                 <h2>Time To Beat</h2>
-                <p>{{gameData!.name}} takes <strong>{{gameData?.hltb_main_story}}</strong> hours to complete on average, as reported by RAWG. <br> So far, you have played {{(userGameData.playtime_minutes / 60).toFixed(2)}} hours which is {{completionPercentage!.toFixed(2)}}% !</p>
+                <p>{{gameData?.name}} takes <strong>{{gameData?.hltb_main_story}}</strong> hours to complete on average, as reported by RAWG. So far, you have played {{(userGameData.playtime_minutes / 60).toFixed(2)}} hours which is {{completionPercentage?.toFixed(2)}}% !</p>
+                <div class="progress">
+                    <span>0%</span>
+                    <mat-progress-bar color="primary" mode="determinate" [value]="completionPercentage" [color]="'#ff9800'"></mat-progress-bar>
+                    <span>100%</span>
+                </div>
             </div>
             <div class="reviews"></div>
         </div>

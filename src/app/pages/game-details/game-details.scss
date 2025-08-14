@@ -112,3 +112,44 @@ section {
     flex-direction: column;
     gap: 1em;
 }
+
+.highlight {
+    max-height: 400px;
+    max-width: 800px;
+}
+
+::ng-deep .mat-mdc-progress-bar .mdc-linear-progress__bar-inner {
+  border-color: #ff9800 !important;
+}
+
+:host ::ng-deep .mat-mdc-progress-bar .mdc-linear-progress__primary-bar {
+  transition-duration: 0.8s !important;
+}
+
+.progress {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    transition: all 0.3s ease-in;
+}
+
+.progress > span {
+    display: inline-block;
+    animation: bounce 1s ease;
+}
+
+.progress > span:last-child {
+  animation-delay: 0.1s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
