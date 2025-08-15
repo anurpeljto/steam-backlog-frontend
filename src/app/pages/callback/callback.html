@@ -18,24 +18,26 @@
     </div>
     <!--  -->
     <div class="top">
-        <p class="title">Your games</p>
-        <mat-form-field>
-                <mat-label>Search</mat-label>
-                <input matInput placeholder="Ex. The Witcher 3" [value]="search" (input)="onSearchChange($event)">
-            </mat-form-field>
-        <div class="tags-container">
-            @for (genre of genres; track $index) {
-                <div class="tag" (click)="queryByGenre(genre.genre)">
-                    {{genre.genre}}
+        <div class="top-content">
+            <p class="title">Your games</p>
+            <mat-form-field>
+                    <mat-label>Search</mat-label>
+                    <input matInput placeholder="Ex. The Witcher 3" [value]="search" (input)="onSearchChange($event)">
+                </mat-form-field>
+            <div class="tags-container">
+                @for (genre of genres; track $index) {
+                    <div class="tag" (click)="queryByGenre(genre.genre)">
+                        {{genre.genre}}
+                    </div>
+                }
+                <div class="tags-container">
+                    <div class="tag" style="background-color: hsl(0, 99%, 59%) !important; color: black !important" (click)="queryByFilter(0)">
+                        Never played
+                    </div>
+                    <div class="tag" style="background-color: hsl(36, 100%, 57%) !important; color: black !important" (click)="queryByFilter(180)">
+                        Less than 3 hours played
+                    </div>
                 </div>
-            }
-        </div>
-        <div class="tags-container">
-            <div class="tag" style="background-color: hsl(0, 99%, 59%) !important; color: black !important" (click)="queryByFilter(0)">
-                Never played
-            </div>
-            <div class="tag" style="background-color: hsl(36, 100%, 57%) !important; color: black !important" (click)="queryByFilter(180)">
-                Less than 3 hours played
             </div>
         </div>
         @if (dataLoaded) {

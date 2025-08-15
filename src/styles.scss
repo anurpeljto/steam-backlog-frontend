@@ -76,22 +76,9 @@ a {
 }
 
 :root {
-    --purple: #1B0554;
-    --brightPurple: #2A0884;
-    --yellow: #FCD23F;
-    --darkerYellow: #FBC60D;
-    --brown: #842A08;
-    --green: #08842A;
-    --gray: #69686D;
-    --red: #D8024F;
-    --blue: #4B29ED;
-    --background: #1D0F46; 
-    --forestGreen: #27513F;
-    --mossGreen: #7CC56B;
-    --skyBlue: #7AA3C5; 
-    --mutedBrown: #5E3C28;
-    --warmBeige: #E2B67B;
-    --accentRed: #C0322A;
+    --main-orange: #FFA726;
+    --main-orange-hsl: hsl(36, 100%, 38%);
+    --aqua: hsl(171, 92%, 28%);
 
     --dark-bg-dark: hsl(0, 0%, 0%);
     --dark-bg: hsl(0, 0%, 5%);

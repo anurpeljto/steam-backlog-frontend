@@ -9,7 +9,7 @@
 
 .card:hover {
     .details {
-        background-color: hsl(171, 92%, 38%);
+        background-color: hsl(171, 92%, 30%);
 
         @media (prefers-color-scheme: dark){
             color: hsl(0, 0%, 70%);
@@ -27,7 +27,7 @@
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     gap: 0.5em;
-    color: black;
+    color: var(--light-text);
     @media (prefers-color-scheme: dark){
         color: hsl(0, 0%, 70%);
         background-color: hsl(0, 0, 10%);

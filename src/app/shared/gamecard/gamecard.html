@@ -1,5 +1,5 @@
-<div class="card" (click)="goToDetails()">
-  <img [src]="game.header_image || '/gallery.jpg'" 
+<div class="card">
+  <img (click)="goToDetails()" [src]="game.header_image || '/gallery.jpg'" 
        [alt]="game.name || 'placeholder for unknown img'">
 
   <div class="details">

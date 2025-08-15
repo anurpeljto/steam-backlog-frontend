@@ -156,8 +156,14 @@
     height: 100%;
     margin-top: 1em;
     gap: 3em;
+    border-radius: 10px;
+    background-color: hsl(171, 92%, 38%);
     @media (max-width: 1536px){
         gap: 1em;
+    }
+
+    @media (prefers-color-scheme: dark){
+        background-color: black;
     }
 }
 
@@ -207,8 +213,7 @@ mat-paginator {
 }
 
 .tag:hover {
-    background: #ffa726;
-    background: radial-gradient(white, #ffa726);
+    background-color: hsl(171, 92%, 38%);
 }
 
 .tags-container {
@@ -227,11 +232,10 @@ mat-paginator {
     border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
+    background-color: hsl(36, 100%, 40%);
     @media (max-width: 1536px) {
         padding: 2em 3em;
     }
-
-    background-color: hsl(36, 100%, 45%);
     color: black;
 }
 
@@ -260,4 +264,19 @@ mat-paginator {
 
 ::ng-deep .mdc-line-ripple::after,
 ::ng-deep .mdc-line-ripple::before {
+}
+
+
+.top-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    background-color: hsl(36, 100%, 45%);
+    border-radius: 10px;
+
+    @media (prefers-color-scheme: dark){
+        background-color: var(--dark-bg-dark);
+        color: var(--orange-main);
+    }
 }

@@ -15,7 +15,7 @@
         <div class="left-part">
             <div class="description">
                 <h2>Game Description</h2>
-                <p>{{gameData?.description}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab atque minus aspernatur ut tenetur cupiditate deserunt aperiam possimus ex eum non, architecto modi, expedita animi laborum cumque, libero voluptates assumenda?</p>
+                <p class="inner-desc" [innerHTML]="gameData?.detailed_description"></p>
             </div>
             <div class="tags">
                 @for (tag of gameData?.genres; track $index) {

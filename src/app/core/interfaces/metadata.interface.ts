@@ -12,5 +12,6 @@ export default interface MetaData {
     name: string;
     header_image: string;
     rating?: number | null;
-    screenshots: Screenshot[]
+    screenshots: Screenshot[];
+    detailed_description: string;
 }

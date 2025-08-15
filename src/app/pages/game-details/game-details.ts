@@ -45,12 +45,14 @@ export class GameDetails implements OnInit{
   }
 
   calculatePercentage(){
-    this.completionPercentage = ((this.userGameData.playtime_minutes / 60) / this.gameData?.hltb_main_story! ) * 100;
+    const mainStoryHours = this.gameData?.hltb_main_story ?? 0;
+    this.completionPercentage = mainStoryHours
+      ? ((this.userGameData.playtime_minutes / 60) / mainStoryHours) * 100
+      : 0;
     return this.completionPercentage;
   }
 
   setHighlight(image: Screenshot) {
-    console.log(image);
     this.highlightedMedia = image.path_full;
   }
 
