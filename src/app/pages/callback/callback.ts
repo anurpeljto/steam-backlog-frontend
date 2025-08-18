@@ -10,6 +10,7 @@ import { GameService } from '../../core/services/game.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormField, MatLabel } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { ProfileBox } from '../../shared/profile-box/profile-box';
 
 type SteamJwtPayload = {
   steam_id: string;
@@ -22,7 +23,15 @@ type SteamJwtPayload = {
 
 @Component({
   selector: 'app-callback',
-  imports: [FontAwesomeModule, Gamecard, MatPaginatorModule, MatProgressSpinnerModule, MatFormField, MatLabel, MatInputModule],
+  imports: [FontAwesomeModule,
+    Gamecard,
+    MatPaginatorModule, 
+    MatProgressSpinnerModule, 
+    MatFormField, 
+    MatLabel, 
+    MatInputModule,
+    ProfileBox
+  ],
   templateUrl: './callback.html',
   styleUrl: './callback.scss'
 })

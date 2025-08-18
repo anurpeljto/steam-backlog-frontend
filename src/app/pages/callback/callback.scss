@@ -148,6 +148,12 @@
     border-bottom-right-radius: 10px;
 }
 
+.profile-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .games-container {
     position: relative;
     display: grid;

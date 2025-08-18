@@ -1,0 +1,18 @@
+section {
+    background-color: black;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orange-box {
+    background-color: var(--main-orange);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10em;
+    justify-content: center;
+    align-items: center;
+}
