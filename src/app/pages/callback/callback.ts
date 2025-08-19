@@ -19,6 +19,7 @@ type SteamJwtPayload = {
   profileUrl: string;
   iat?: number;
   exp?: number;
+  description: string;
 };
 
 @Component({
@@ -52,6 +53,7 @@ export class Callback implements OnInit{
   genres: any | null = null;
   dataLoaded: boolean = false;
   search: string = '';
+  description: string = '';
   private searchSubject = new Subject<string>();
   private pollSub?: Subscription;
 
@@ -77,16 +79,18 @@ export class Callback implements OnInit{
 
     try {
       const decoded = jwtDecode<SteamJwtPayload>(this.token);
-      const { steam_id, avatar, personaname, profileUrl } = decoded;
+      const { steam_id, avatar, personaname, profileUrl, description } = decoded;
       this.steam_id = steam_id;
       this.avatar = avatar;
       this.personaname = personaname;
       this.profileUrl = profileUrl;
+      this.description = description;
 
       localStorage.setItem('steam_id', steam_id);
       localStorage.setItem('personaname', personaname);
       localStorage.setItem('profileUrl', profileUrl);
       localStorage.setItem('avatar', avatar);
+      localStorage.setItem('description', description);
     } catch (err) {
       console.error('Invalid token:', err);
     }

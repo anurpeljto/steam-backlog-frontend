@@ -4,24 +4,28 @@
         <h1>{{personaname}}</h1>
         <a [href]="profileUrl"><fa-icon [icon]="faSteam"></fa-icon> {{personaname}}</a>
         @if (!edit) {
-            <p>Welcome to my profile! I'm here to clear my backlog and discover new games.</p>
+            <p>{{description || `Welcome to my profile! I'm here to clear my backlog and discover new games.`}}</p>
         }
         @else {
-            <textarea placeholder="Welcome to my profile! I'm here to clear my backlog and discover new games."></textarea>
+            <textarea
+                [(ngModel)]="description"
+                [placeholder]="description || `Welcome to my profile! I'm here to clear my backlog and discover new games.`"></textarea>
         }
         @if (buttonsVisible) {
             <div class="button-container">
-                <div class="button" id="edit">
+                <div class="button" id="edit" (click)="goToEdit()">
                     Edit profile
                 </div>
-                <div class="button" id="share">
+                <div class="button" id="share" (click)="toggleShareDialog()">
                     Share profile
                 </div>
             </div>
         }
         @if (!buttonsVisible) {
-            <button class="save">Save</button>
+            <button class="save" (click)="updateDescription()">Save</button>
         }
     </div>
     <img src="pixel-gif.gif" alt="Steam library" class="lib">
 </div>
+
+<app-share [visible]="visible" (visibilityEmitter)="toggleShareDialog()"></app-share>

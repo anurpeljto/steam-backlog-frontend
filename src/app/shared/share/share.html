@@ -1,0 +1,20 @@
+@if (visible) {
+    <div class="overlay">
+        <div class="content">
+            <div class="header">
+                <button mat-icon-button (click)="close()">
+                    <fa-icon [icon]="faClose"></fa-icon>
+                </button>
+                <h2>Share your profile</h2>
+                <div id="invisible"></div>
+            </div>
+
+            <div class="icons">
+                <fa-icon [icon]="faPaperclip" size="2xl" [matTooltip]="'Copy to clipboard'" matTooltipClass="tooltip-danger"></fa-icon>
+                <fa-icon [icon]="faTwitter" size="2xl" [matTooltip]="'Share on X'"></fa-icon>
+                <fa-icon [icon]="faGoogle" size="2xl" [matTooltip]="'Share on Google'"></fa-icon>
+                <fa-icon [icon]="faWhatsapp" size="2xl" [matTooltip]="'Share on WhatsApp'"></fa-icon>
+            </div>
+        </div>
+    </div>
+}

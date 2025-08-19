@@ -7,7 +7,7 @@
     max-width: 700px;
     width: 100%;
     overflow: hidden;
-
+    font-family: 'Poppins', sans-serif;
 }
 
 .user {
@@ -56,8 +56,16 @@
     background-color: #ffa726;
 }
 
+#edit:hover {
+    background-color: hsl(36, 100%, 45%);
+}
+
 #share {
     background-color: white;
+}
+
+#share:hover {
+    background-color: hsl(0, 0%, 90%);
 }
 
 .lib {
@@ -94,6 +102,7 @@ textarea {
 .save {
     padding: 0.5em;
     border-radius: 10px;
+    width: 100%;
     background-color: var(--main-orange);
     border: 2px solid var(--main-orange);
     color: black;

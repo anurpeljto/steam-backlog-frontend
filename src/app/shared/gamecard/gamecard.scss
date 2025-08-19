@@ -1,120 +1,100 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    @media (max-width: 1280px){
-        max-width: 400px;
-    }
-    transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 1280px){
+    max-width: 400px;
+  }
+  transition: all 0.3s ease-in-out;
 }
 
 .card:hover {
-    .details {
-        background-color: hsl(171, 92%, 30%);
-
-        @media (prefers-color-scheme: dark){
-            color: hsl(0, 0%, 70%);
-            background-color: hsl(0, 0, 15%);
-        }
-    }
+  .details {
+    background-color: hsl(0, 0%, 15%);
+    color: hsl(0, 0%, 70%);
+  }
 }
 
 .details {
-    display: flex;
-    flex-direction: column;
-    background-color: hsl(171, 92%, 28%);
-    padding: 1em;
-    border-radius: 5px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    gap: 0.5em;
-    color: var(--light-text);
-    @media (prefers-color-scheme: dark){
-        color: hsl(0, 0%, 70%);
-        background-color: hsl(0, 0, 10%);
-    }
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(0, 0, 10%);
+  padding: 1em;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  gap: 0.5em;
+  color: hsl(0, 0%, 70%);
 }
 
 .details > .strong {
-    color: white;
+  color: white;
 }
 
 img {
-    object-fit: cover;
-    max-height: 215px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    @media (max-width: 1536px){
-        max-height: 100px;
-    }
+  object-fit: cover;
+  max-height: 215px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  @media (max-width: 1536px){
+    max-height: 100px;
+  }
 }
 
 .tag {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: hsl(171, 92%, 38%);
-    @media (prefers-color-scheme: dark){
-        background-color: hsl(0, 0%, 20%);
-        color: hsl(36, 100, 57)
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(36, 100%, 57%);
+  padding: 5px;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 20%);
 }
 
 .tag-container {
-    display: flex;
-    width: 100%;
-    justify-content: start;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5em 1em;
-    // color: #3B3A41;
-    color: white;
-    cursor: pointer;
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em 1em;
+  color: white;
+  cursor: pointer;
 }
 
 .completed {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    // justify-content: space-between;
-    align-items: start;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2em;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+  cursor: pointer;
 }
 
 .action-button {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;    
 }
 
 .tag.more {
-    // background-color: var(--) !important;
-    background-color: hsl(36, 100%, 57%);
-    color: black;
-
-    @media (prefers-color-scheme: dark){
-        background-color: hsl(93, 88, 27);
-        color: hsl(0, 0%, 15%);   
-    }
+  background-color: hsl(93, 88, 27);
+  color: hsl(0, 0%, 15%);
 }
 
 .tag.less {
-    background-color: var(--dark-bg-dark) !important;
-    color: white;
+  background-color: var(--dark-bg-dark) !important;
+  color: white;
 }
 
 .completed-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
