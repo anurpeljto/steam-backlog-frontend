@@ -20,7 +20,7 @@ export class GameService {
     return this.http.get<any>(`http://localhost:3000/user-search/games/${steam_id}/metadata?${params.toString()}`)
   }
 
-  startPolling(steam_id: string | undefined, page: number | undefined, size: number | undefined){
+  startPolling(steam_id: string, page: number | undefined, size: number | undefined){
     return this.http.get<any>(`http://localhost:3000/user-search/games/${steam_id}/metadata?page=${page}&size=${size}`)
   }
 
@@ -67,5 +67,17 @@ export class GameService {
           return res
         })
       );
+  }
+
+  markCompleted(appid: number){
+    return this.http.post(`http://localhost:3000/game-status/completed`, {
+      appid: appid
+    });
+  }
+
+  markNotCompleted(appid: number){
+    return this.http.post(`http://localhost:3000/game-status/not-completed`, {
+      appid: appid
+    });
   }
 }

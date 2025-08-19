@@ -1,9 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { faCheck, faBan } from '@fortawesome/free-solid-svg-icons';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { GameService } from '../../core/services/game.service';
+
 
 @Component({
   selector: 'app-gamecard',
@@ -15,14 +18,35 @@ export class Gamecard {
   @Input() game: any;
   @Input() action?: (genre: string) => void;
   @Input() category?: (category: string) => void;
+  @Output('changeEmitter') changeEmitter: EventEmitter<Boolean> = new EventEmitter<Boolean>;
   faCheck = faCheck;
   faBan = faBan;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private gameService: GameService,
+    private snackBar: MatSnackBar
   ){}
 
   goToDetails(){
     this.router.navigate(['/game', this.game.appid]);
+  }
+
+  markCompleted(event: number){
+    this.gameService.markCompleted(event).subscribe(() => {
+      this.changeEmitter.emit(true);
+      this.snackBar.open('Successfully marked game completed', 'OK', {
+        duration: 5000
+      });
+    })
+  }
+
+  markNotCompleted(event: number){
+    this.changeEmitter.emit(true);
+    this.gameService.markNotCompleted(event).subscribe(() => {
+      this.snackBar.open('Successfully marked game not-completed', 'OK', {
+        duration: 5000
+      });
+    })
   }
 }

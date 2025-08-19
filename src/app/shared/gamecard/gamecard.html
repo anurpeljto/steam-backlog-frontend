@@ -50,8 +50,8 @@
         <p><span style="color: hsl(0, 0%, 90%)">Time To Complete: </span>{{ game.main_story ? `${game.main_story}h` : game.gm_hltb_main_story ? `${game.gm_hltb_main_story}h` : `No information available`}}</p>
       </div>
       <div class="buttons">
-          <div class="action-button"><fa-icon [icon]="faCheck" matTooltip="Mark finished" style="color: white; fill: white;"></fa-icon></div>
-          <div class="action-button"><fa-icon [icon]="faBan" matTooltip="Mark not finished" style="color: white; fill: white;"></fa-icon></div>
+          <div class="action-button" (click)="markCompleted(game.appid)"><fa-icon [icon]="faCheck" matTooltip="Mark finished" style="color: white; fill: white;"></fa-icon></div>
+          <div class="action-button" (click)="markNotCompleted(game.appid)"><fa-icon [icon]="faBan" matTooltip="Mark not finished" style="color: white; fill: white;"></fa-icon></div>
         </div>
     </div>
 

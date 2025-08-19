@@ -157,9 +157,10 @@ export class Callback implements OnInit{
   }
 
   startPolling() {
-    if (!this.steam_id) return;
+    if (!this.steam_id || typeof this.steam_id !== 'string') return;
+    this.pollSub?.unsubscribe();
     this.pollSub = interval(2000).pipe(
-      switchMap(() => this.gameService.startPolling(this.steam_id, this.page, this.size))
+      switchMap(() => this.gameService.startPolling(this.steam_id!, this.page, this.size))
     ).subscribe({
       next: (data) => {
         this.gameData = data;
