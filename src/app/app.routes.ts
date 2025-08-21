@@ -37,6 +37,11 @@ export const routes: Routes = [
             import('./pages/profile/profile').then(m => m.Profile)
     },
     {
+        path: 'badges',
+        loadComponent: () =>
+            import('./pages/badges/badges').then(m => m.Badges)
+    },
+    {
         path: '**',
         loadComponent: () => 
             import('./pages/not-found/not-found').then(m => m.NotFound)

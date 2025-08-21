@@ -178,3 +178,12 @@ section {
     flex-direction: column;
     gap: 1em;
 }
+
+a {
+    font-weight: bold;
+    text-decoration: underline;
+    
+    &:hover {
+        color: hsl(36, 100%, 65%) !important; 
+    }
+}

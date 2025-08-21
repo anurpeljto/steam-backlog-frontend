@@ -32,7 +32,7 @@
         <div class="right-part">
             <div class="time-to-beat">
                 <h2>Time To Beat</h2>
-                <p>{{gameData?.name}} takes <strong>{{gameData?.hltb_main_story}}</strong> hours to complete on average, as reported by RAWG. So far, you have played {{(userGameData.playtime_minutes / 60).toFixed(2)}} hours which is {{completionPercentage?.toFixed(2)}}% !</p>
+                <p>{{gameData?.name}} takes <strong>{{gameData?.hltb_main_story}}</strong> hours to complete on average, as reported by <a href="https://rawg.io/">RAWG</a>. So far, you have played {{(userGameData.playtime_minutes / 60).toFixed(2)}} hours which is {{completionPercentage?.toFixed(2)}}% !</p>
                 <div class="progress">
                     <span>0%</span>
                     <mat-progress-bar color="primary" mode="determinate" [value]="completionPercentage" [color]="'#ff9800'"></mat-progress-bar>

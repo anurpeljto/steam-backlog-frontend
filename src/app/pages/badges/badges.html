@@ -1,0 +1,15 @@
+<section>
+    <div class="badges-container">
+        <h2>Your Badges</h2>
+        <div class="badge-row">
+            @for (badge of badges; track $index) {
+                <div class="badge">
+                    <div class="details">
+                        <img [src]="badge.badge_image_location" [alt]="badge.description">
+                        <span>{{badge.description}}</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
