@@ -11,6 +11,7 @@ import { Badge } from '../../core/interfaces/badge.interface';
 export class Badges implements OnInit{
   badges: Badge[] = [];
   dataLoaded = false;
+  topBadges = ['gifs/bronze-gif.gif', 'gifs/gold-gif.gif'];
 
   constructor(
     private badgeService: BadgeService

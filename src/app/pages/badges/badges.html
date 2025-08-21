@@ -4,6 +4,28 @@
         <div class="badge-row">
             @for (badge of badges; track $index) {
                 <div class="badge">
+                    <div class="unlocked-gif">
+                        <span>Unlocks the <strong>{{badge.name}}</strong> Profile GIF!</span>
+                        <img [src]="badge.gif" [alt]="badge.name" [class.top]="topBadges.includes(badge.gif)">
+                    </div>
+                    <div class="details">
+                        <h2>{{badge.name}}</h2>
+                        <img [src]="badge.badge_image_location" [alt]="badge.description">
+                        <span>{{badge.description}}</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="badges-container">
+        <h2>All Badges</h2>
+        <div class="badge-row">
+            @for (badge of badges; track $index) {
+                <div class="badge">
+                    <div class="unlocked-gif">
+                        <span>Unlocks the <strong>{{badge.name}}</strong> Profile GIF!</span>
+                        <img [src]="badge.gif" [alt]="badge.name">
+                    </div>
                     <div class="details">
                         <img [src]="badge.badge_image_location" [alt]="badge.description">
                         <span>{{badge.description}}</span>

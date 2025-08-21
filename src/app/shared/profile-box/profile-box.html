@@ -1,6 +1,8 @@
 <div class="profile-container">
     <div class="user" #gamesList>
-        <img [src]="avatar" alt="avatar" class="icon"/>
+        <div class="avatar-frame">
+            <img [src]="avatar" alt="avatar" class="icon"/>
+        </div>
         <h1>{{personaname}}</h1>
         <a [href]="profileUrl"><fa-icon [icon]="faSteam"></fa-icon> {{personaname}}</a>
         @if (!edit) {
@@ -25,7 +27,7 @@
             <button class="save" (click)="updateDescription()">Save</button>
         }
     </div>
-    <img src="pixel-gif.gif" alt="Steam library" class="lib">
+    <img src="gifs/legendary-gif.gif" alt="Steam library" class="lib">
 </div>
 
 <app-share [visible]="visible" (visibilityEmitter)="toggleShareDialog()"></app-share>

@@ -5,4 +5,5 @@ export interface Badge {
     condition: number;
     badge_image_location: string;
     bordered_badge_image_location: string;
+    gif: string;
 }
