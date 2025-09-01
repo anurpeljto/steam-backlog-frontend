@@ -41,4 +41,27 @@
             <h1>Please bare with us while we fetch your game metadata :)</h1>
         </div>
     }
+
+@if(promptVisible){
+    <div class="overlay">
+        <div class="content">
+            <div class="header">
+                <button mat-icon-button (click)="close()">
+                    <fa-icon [icon]="faClose"></fa-icon>
+                </button>
+                <div style="display: flex; flex-direction: column; gap: 1em">
+                    <h2>Are you still playing <i>{{this.streak.game_title}}?</i></h2>
+                    <span>This is necessary to keep track of your streak. If you select <strong>'No'</strong>, your score will reset. If you select <strong>'Finished'</strong>, you will have 72 hours to select a new game to play without losing your streak.</span>
+                </div>
+                <div id="invisible"></div>
+            </div>
+
+            <div class="options">
+            <button class="option yes" (click)="processStreakUpdate(ResponseTypes.Yes)">Yes</button>
+            <button class="option no" (click)="processStreakUpdate(ResponseTypes.No)">No</button>
+            <button class="option finished" (click)="processStreakUpdate(ResponseTypes.Finished)">Finished</button>
+            </div>
+        </div>
+    </div>
+}
 </section>

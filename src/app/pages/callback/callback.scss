@@ -218,3 +218,94 @@ mat-paginator {
   border-radius: 10px;
   color: var(--orange-main);
 }
+
+.overlay {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: appear 0.25s ease-in;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsl(0, 0%, 10%, 0.7);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+  }
+}
+
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.content {
+  max-width: 450px;
+  padding: 2em;
+  background-color: hsl(0, 0%, 20%);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  z-index: 101;
+}
+
+.header {
+  display: flex;
+  gap: 1em;
+  line-height: 2em;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#invisible {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+
+  .option {
+    flex: 1;
+    padding: 0.8em;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    transition: background 0.2s ease;
+
+    &.yes {
+      background-color: hsl(140, 70%, 40%);
+      color: white;
+
+      &:hover { background-color: hsl(140, 70%, 35%); }
+    }
+
+    &.no {
+      background-color: hsl(0, 70%, 50%);
+      color: white;
+
+      &:hover { background-color: hsl(0, 70%, 45%); }
+    }
+
+    &.finished {
+      background-color: hsl(36, 100%, 45%);
+      color: black;
+
+      &:hover { background-color: hsl(36, 100%, 40%); }
+    }
+  }
+}

@@ -11,6 +11,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormField, MatLabel } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ProfileBox } from '../../shared/profile-box/profile-box';
+import { BadgeService } from '../../core/services/badge.service';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { ResponseTypes } from '../../core/enums/response-types.enum';
 
 type SteamJwtPayload = {
   steam_id: string;
@@ -54,12 +57,23 @@ export class Callback implements OnInit{
   dataLoaded: boolean = false;
   search: string = '';
   description: string = '';
+
+  streak: any;
+  promptVisible = false;
+  
+
   private searchSubject = new Subject<string>();
   private pollSub?: Subscription;
 
   faSteam = faSteam;
+  faClose = faClose;
+  ResponseTypes = ResponseTypes;
 
-  constructor(private route: ActivatedRoute, private gameService: GameService) {
+  constructor(
+    private route: ActivatedRoute,
+    private gameService: GameService,
+    private badgeService: BadgeService  
+  ) {
   }
 
   loadUserData() {
@@ -105,6 +119,8 @@ export class Callback implements OnInit{
       this.loadGameDataFromDb(this.page, this.size);
       this.startPolling();
     }
+
+    this.getStreak();
 
     const split = this.profileUrl?.split('/');
     if (split) this.profileUrlName = split[split.length - 2];
@@ -235,6 +251,36 @@ export class Callback implements OnInit{
     this.page = 0;
     this.size = 20;
     this.searchSubject.next(event.target.value);
+  }
+
+  close(){
+    this.promptVisible = false;
+  }
+
+  open(){
+    this.promptVisible = true;
+  }
+
+  processStreakUpdate(response: ResponseTypes) {
+    if(!this.steam_id) return;
+
+    this.badgeService.updateStreakProgress(Number(this.steam_id), response).subscribe(data => {
+      this.streak = data;
+      this.promptVisible = false;
+    });
+  }
+
+  getStreak(){
+    if(!this.steam_id) return;
+    this.badgeService.getUserStreak(Number(this.steam_id)).subscribe(sub => {
+      this.streak = sub;
+      const today = new Date();
+      const updatedStreakDate = new Date(this.streak.updated_at);
+      const msIn24h = 24 * 60 * 60 * 1000;
+      if(today.getTime() - updatedStreakDate.getTime() > msIn24h){
+        this.open();
+      }
+    })
   }
 
   ngOnDestroy(): void {
