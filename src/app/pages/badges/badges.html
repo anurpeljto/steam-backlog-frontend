@@ -1,8 +1,18 @@
 <section>
     <div class="badges-container">
         <h2>Your Badges</h2>
-        <div class="badge-row">
-            @for (badge of badges; track $index) {
+        <div class="badge-row" [class.two-rows]="usersBadges.length > 4">
+            @if(!dataLoaded){
+                <div class="loading-spinner">
+                    <mat-progress-spinner
+                        diameter="60"
+                        strokeWidth="5"
+                        color="accent"
+                        mode="indeterminate">
+                    </mat-progress-spinner>
+                </div>
+            }
+            @for (badge of usersBadges; track $index) {
                 <div class="badge">
                     <div class="unlocked-gif">
                         <span>Unlocks the <strong>{{badge.name}}</strong> Profile GIF!</span>
@@ -19,12 +29,22 @@
     </div>
     <div class="badges-container">
         <h2>All Badges</h2>
-        <div class="badge-row">
+        <div class="badge-row two-rows">
+            @if(!dataLoaded){
+                <div class="loading-spinner">
+                    <mat-progress-spinner
+                        diameter="60"
+                        strokeWidth="5"
+                        color="accent"
+                        mode="indeterminate">
+                    </mat-progress-spinner>
+                </div>
+            }
             @for (badge of badges; track $index) {
                 <div class="badge">
                     <div class="unlocked-gif">
                         <span>Unlocks the <strong>{{badge.name}}</strong> Profile GIF!</span>
-                        <img [src]="badge.gif" [alt]="badge.name">
+                        <img [src]="badge.gif" [alt]="badge.name" [class.top]="topBadges.includes(badge.gif)">
                     </div>
                     <div class="details">
                         <img [src]="badge.badge_image_location" [alt]="badge.description">

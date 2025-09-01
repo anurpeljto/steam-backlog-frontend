@@ -70,6 +70,7 @@ export class ProfileBox implements OnInit{
 
   toggleShareDialog(){
     this.visible = !this.visible;
+    window.scrollTo(0, 0);
     document.body.classList.add('no-scroll');
     if(!this.visible){
       document.body.classList.remove('no-scroll')

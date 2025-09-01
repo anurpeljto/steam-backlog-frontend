@@ -27,7 +27,6 @@ section {
 .badge-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr 1fr;
     gap: 2em;
     padding: 2em;
     min-height: 250px;
@@ -35,6 +34,10 @@ section {
     border-radius: 5px;
     // overflow-x: auto;
     position: relative;
+}
+
+.two-rows {
+    grid-template-rows: 1fr 1fr;
 }
 
 .badge {
@@ -108,7 +111,7 @@ section {
     min-width: 200px;
     background-color: hsl(36, 100%, 45%);
     position: absolute; 
-    top: -8.5em; 
+    top: -9em; 
     transform: translateX(-50%); 
     z-index: 1000;
     visibility: hidden;
@@ -130,4 +133,12 @@ section {
 
 .top {
     object-position: top center !important;
+}
+
+.loading-spinner {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
 }

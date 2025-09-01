@@ -20,6 +20,7 @@ export class GameDetails implements OnInit{
   steamid: string | null = null;
   userGameData: any;
   completionPercentage: number | null = null;
+  dataLoaded = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -49,6 +50,7 @@ export class GameDetails implements OnInit{
     this.completionPercentage = mainStoryHours
       ? ((this.userGameData.playtime_minutes / 60) / mainStoryHours) * 100
       : 0;
+    this.dataLoaded = true;
     return this.completionPercentage;
   }
 

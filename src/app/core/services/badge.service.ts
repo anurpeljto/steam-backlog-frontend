@@ -27,4 +27,8 @@ export class BadgeService {
   deleteBadge(id: number) {
     return this.http.delete<Badge>(`http://localhost:3000/badges/${id}`);
   }
+
+  getUserBadges(id: number){
+    return this.http.get<Badge[]>(`http://localhost:3000/badges/user/${id}`);
+  }
 }

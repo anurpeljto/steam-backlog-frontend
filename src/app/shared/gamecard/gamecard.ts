@@ -32,8 +32,9 @@ export class Gamecard {
     this.router.navigate(['/game', this.game.appid]);
   }
 
-  markCompleted(event: number){
-    this.gameService.markCompleted(event).subscribe(() => {
+  markCompleted(genre: number, event: MouseEvent){
+    event.stopPropagation();
+    this.gameService.markCompleted(genre).subscribe(() => {
       this.changeEmitter.emit(true);
       this.snackBar.open('Successfully marked game completed', 'OK', {
         duration: 5000
@@ -41,9 +42,10 @@ export class Gamecard {
     })
   }
 
-  markNotCompleted(event: number){
+  markNotCompleted(genre: number, event: MouseEvent){
+    event.stopPropagation();
     this.changeEmitter.emit(true);
-    this.gameService.markNotCompleted(event).subscribe(() => {
+    this.gameService.markNotCompleted(genre).subscribe(() => {
       this.snackBar.open('Successfully marked game not-completed', 'OK', {
         duration: 5000
       });
