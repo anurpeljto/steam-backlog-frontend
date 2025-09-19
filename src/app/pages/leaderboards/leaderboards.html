@@ -1,0 +1,45 @@
+<main>
+  <div class="container">
+    <h1>Leaderboards</h1>
+
+    <div class="table">
+      <div class="header">
+        <div class="cell rank">#</div>
+        <div class="cell name">Username</div>
+        <div class="cell name">Rank</div>
+        <div class="cell score">Streak</div>
+      </div>
+
+      @if (!streaks) {
+        <div class="row">
+          <mat-progress-spinner
+            diameter="60"
+            strokeWidth="5"
+            color="accent"
+            mode="indeterminate">
+          </mat-progress-spinner>
+        </div>
+      }
+
+      @for (streak of streaks; track $index) {
+        <div class="row" (click)="goToSteam(streak.u_steam_id)" [matTooltip]="'Go to Steam Profile'">
+          <div class="cell rank">{{ $index + 1 }}</div>
+          <div class="cell name click">
+            <b>{{ streak.u_username }}</b>
+          </div>
+          <div class="flex">
+            @if(streak.b_badge_image_location){
+                <img 
+              [src]="streak.b_badge_image_location" 
+              [alt]="streak.b_name || 'Badge'"
+              class="img-rank" 
+              />
+            }
+            <span>{{ streak.b_name }}</span>
+          </div>
+          <div class="cell score">{{ streak.us_longest_streak }} days</div>
+        </div>
+      }
+    </div>
+  </div>
+</main>

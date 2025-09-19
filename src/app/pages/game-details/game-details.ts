@@ -35,7 +35,7 @@ export class GameDetails implements OnInit{
       this.gameData = sub.metadata;
       this.userGameData = sub.userData;
       this.media = sub.metadata.screenshots;
-      this.highlightedMedia = sub.metadata.header_image;
+      this.highlightedMedia = sub.metadata.screenshots[0].path_full;
       this.calculatePercentage();
     })
   }

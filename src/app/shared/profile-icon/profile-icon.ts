@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -14,9 +14,15 @@ import { faSignOut } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './profile-icon.html',
   styleUrl: './profile-icon.scss'
 })
-export class ProfileIcon implements OnInit{
+export class ProfileIcon implements OnInit, OnDestroy{
   imgUrl: string = '';
   isMenuOpen: boolean = false;
+  invisible = false;
+  private storageListener = (event: StorageEvent) => {
+    if (event.key === 'avatar') {
+      this.updateAvatar(event.newValue);
+    }
+  };
 
   faUser = faUser;
   faHandsHelping = faFlag;
@@ -30,12 +36,12 @@ export class ProfileIcon implements OnInit{
   ){}
 
   ngOnInit(): void {
-    const url = localStorage.getItem('avatar');
-    if(!url){
-      this.imgUrl = 'steam-button.png'
-    } else {
-      this.imgUrl = url;
-    }
+    this.updateAvatar(localStorage.getItem('avatar'));
+    window.addEventListener('storage', this.storageListener);
+  }
+
+  private updateAvatar(url: string | null) {
+    this.imgUrl = url ? url : 'steam-button.png';
   }
 
   toggleMenu(){
@@ -45,5 +51,9 @@ export class ProfileIcon implements OnInit{
   logOut() {
     localStorage.clear();
     window.location.href = '';
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('storage', this.storageListener);
   }
 }

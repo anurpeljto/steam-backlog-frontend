@@ -49,7 +49,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 0.5em; 
+    gap: 2em; 
 }
 
 #edit {
@@ -132,10 +132,11 @@ textarea::selection {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../../../../public/badges/bordered/legendary.svg') no-repeat center center; 
-  background-size: 300px 300px; 
+  background: var(--badge-border) no-repeat center center;
+  background-size: 300px 300px;
   z-index: 10;
 }
+
 
 .avatar-frame .icon {
   width: 60%;

@@ -29,15 +29,15 @@ export class BadgeService {
     return this.http.delete<Badge>(`http://localhost:3000/badges/${id}`);
   }
 
-  getUserBadges(id: number){
+  getUserBadges(id: string){
     return this.http.get<Badge[]>(`http://localhost:3000/badges/user/${id}`);
   }
 
-  getUserStreak(id: number){
+  getUserStreak(id: string){
     return this.http.get<any>(`http://localhost:3000/badges/streak/${id}`);
   }
 
-  updateStreakProgress(id: number, response: ResponseTypes){
+  updateStreakProgress(id: string, response: ResponseTypes){
     return this.http
       .post(`http://localhost:3000/badges/progress/${id}`, {
         response
@@ -52,5 +52,27 @@ export class BadgeService {
           grace
         }
       );
+  }
+
+  getProgressToNextBadge(steam_id: string){
+    return this.http
+      .get<any>(`http://localhost:3000/badges/streak/next-badge/${steam_id}`);
+  }
+
+  markGameSelected(steam_id: string, appid: number, grace?: boolean){
+    return this.http
+      .post<any>(`http://localhost:3000/badges/streak/select/${steam_id}`, {
+        appid,
+        grace
+      });
+  }
+
+  getLeaderboards(page: number){
+    return this.http
+      .get<any>(`http://localhost:3000/badges/leaderboards`, {
+        params: {
+          page
+        }
+      });
   }
 }

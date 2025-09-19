@@ -264,7 +264,7 @@ export class Callback implements OnInit{
   processStreakUpdate(response: ResponseTypes) {
     if(!this.steam_id) return;
 
-    this.badgeService.updateStreakProgress(Number(this.steam_id), response).subscribe(data => {
+    this.badgeService.updateStreakProgress(this.steam_id, response).subscribe(data => {
       this.streak = data;
       this.promptVisible = false;
     });
@@ -272,7 +272,7 @@ export class Callback implements OnInit{
 
   getStreak(){
     if(!this.steam_id) return;
-    this.badgeService.getUserStreak(Number(this.steam_id)).subscribe(sub => {
+    this.badgeService.getUserStreak(this.steam_id).subscribe(sub => {
       this.streak = sub;
       const today = new Date();
       const updatedStreakDate = new Date(this.streak.updated_at);

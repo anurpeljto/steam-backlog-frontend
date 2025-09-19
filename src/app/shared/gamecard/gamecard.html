@@ -1,4 +1,4 @@
-<div class="card" (click)="goToDetails()">
+<div class="card" (click)="goToDetails()" [class.playing]="playing">
   <img [src]="game.header_image || '/gallery.jpg'" 
        [alt]="game.name || 'placeholder for unknown img'">
 
@@ -8,36 +8,38 @@
     <div class="tag-container">
 
       @if (game.iscompleted) {
-        <div class="tag" style="background-color: var(--green);">Completed</div>
+        <div class="tag" #tag style="background-color: var(--green);">Completed</div>
       } @else {
-        <div class="tag" style="background-color: #9060b4; color: black;">Not completed</div>
+        <div class="tag" #tag style="background-color: #9060b4; color: black;">Not completed</div>
       }
 
       @if (game.playtime_minutes === 0) {
-        <div class="tag" style="background-color: hsl(0, 99%, 59%); color: black;">Never played</div>
+        <div class="tag" #tag style="background-color: hsl(0, 99%, 59%); color: black;">Never played</div>
       }
 
       @if (game.playtime_minutes > 0 && game.playtime_minutes <= 180) {
-        <div class="tag" style="background-color: #ffa726; color: black;">Less than 3hr played</div>
+        <div class="tag" #tag style="background-color: #ffa726; color: black;">Less than 3hr played</div>
       }
 
       @if (game.genres?.length) {
         @for (genre of game.genres; track $index) {
-          <div class="tag" (click)="action?.(genre)">{{ genre }}</div>
+          <div class="tag" #tag (click)="$event.stopPropagation(); action?.(genre)">{{ genre }}</div>
         }
       }
 
       @if (game.categories?.length) {
         @if (game.expanded) {
           @for (cat of game.categories; track $index) {
-            <div class="tag" (click)="category?.(cat)">{{ cat }}</div>
+            <div class="tag" #tag (click)="$event.stopPropagation(); category?.(cat)">{{ cat }}</div>
           }
-          <div class="tag less" (click)="game.expanded = false">Show less</div>
+          <div class="tag less" #tag (click)="$event.stopPropagation(); game.expanded = false">Show less</div>
         } @else {
           @for (cat of game.categories.slice(0,2); track $index) {
-            <div class="tag" (click)="category?.(cat)">{{ cat }}</div>
+            <div class="tag" #tag (click)="$event.stopPropagation(); category?.(cat)">{{ cat }}</div>
           }
-          <div *ngIf="game.categories.length > 2" class="tag more" (click)="game.expanded = true">More tags...</div>
+          @if(game.categories.length > 2) {
+            <div class="tag more" #tag (click)="$event.stopPropagation(); game.expanded = true">More tags...</div>
+          }
         }
       }
     </div>
@@ -51,6 +53,7 @@
       </div>
       <div class="buttons">
           <div class="action-button" (click)="markCompleted(game.appid, $event)"><fa-icon [icon]="faCheck" matTooltip="Mark finished" style="color: white; fill: white;"></fa-icon></div>
+          <div class="action-button" (click)="selectGame(game.appid, $event)"><fa-icon [icon]="faGamepad" matTooltip="Mark game as 'Currently Playing'" style="color: white; fill: white;"></fa-icon></div>
           <div class="action-button" (click)="markNotCompleted(game.appid, $event)"><fa-icon [icon]="faBan" matTooltip="Mark not finished" style="color: white; fill: white;"></fa-icon></div>
         </div>
     </div>

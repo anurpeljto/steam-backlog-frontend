@@ -1,6 +1,6 @@
 <div class="profile-container">
     <div class="user" #gamesList>
-        <div class="avatar-frame">
+        <div class="avatar-frame" [style]="{'--badge-border': user?.badge_border ? 'url(' + user.badge_border + ')' : ''}">
             <img [src]="avatar" alt="avatar" class="icon"/>
         </div>
         <h1>{{personaname}}</h1>
@@ -15,10 +15,10 @@
         }
         @if (buttonsVisible) {
             <div class="button-container">
-                <div class="button" id="edit" (click)="goToEdit()">
+                <div class="button" #button id="edit" (click)="goToEdit()">
                     Edit profile
                 </div>
-                <div class="button" id="share" (click)="toggleShareDialog()">
+                <div class="button" #button id="share" (click)="toggleShareDialog()">
                     Share profile
                 </div>
             </div>

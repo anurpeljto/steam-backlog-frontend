@@ -1,11 +1,11 @@
-<div class="main">
+<div class="main" [class.invisible]="invisible">
     <img [src]="imgUrl" alt="User's profile picture" (click)="toggleMenu()">
 
     <div class="sub-menu" [class.open]="isMenuOpen">
         <a href="profile"><fa-icon [icon]="faUser"></fa-icon> Profile</a>
         <a href="badges"><fa-icon [icon]="faIdBadge"></fa-icon> Badges</a>
-        <a href="support"><fa-icon [icon]="faHandsHelping"></fa-icon> Support</a>
-        <a href="friends"><fa-icon [icon]="faUserFriends"></fa-icon> Friends</a>
+        <!-- <a href="support"><fa-icon [icon]="faHandsHelping"></fa-icon> Support</a> -->
+        <!-- <a href="friends"><fa-icon [icon]="faUserFriends"></fa-icon> Friends</a> -->
         <a href="leaderboards"><fa-icon [icon]="faRankingStar"></fa-icon> Leaderboards</a>
         <p (click)="logOut()"><fa-icon [icon]="faSignOut"></fa-icon> Log out</p>
     </div>

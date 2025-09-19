@@ -42,6 +42,11 @@ export const routes: Routes = [
             import('./pages/badges/badges').then(m => m.Badges)
     },
     {
+        path: 'leaderboards',
+        loadComponent: () => 
+            import('./pages/leaderboards/leaderboards').then(m => m.Leaderboards)
+    },
+    {
         path: '**',
         loadComponent: () => 
             import('./pages/not-found/not-found').then(m => m.NotFound)

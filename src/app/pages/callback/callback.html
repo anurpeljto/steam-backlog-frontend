@@ -29,7 +29,12 @@
         @if (dataLoaded) {
             <div class="games-container">
                 @for (game of games; track $index) {
-                    <app-gamecard [action]="queryByGenre.bind(this)" [category]="queryByCategory.bind(this)" [game]="game" (changeEmitter)="loadGameDataFromDb(this.page, this.size)"></app-gamecard>
+                    @if(game.isplayingcurrently){
+                        <app-gamecard [playing]="true" [action]="queryByGenre.bind(this)" [category]="queryByCategory.bind(this)" [game]="game" (changeEmitter)="loadGameDataFromDb(this.page, this.size)"></app-gamecard>
+                    }
+                    @else {
+                        <app-gamecard [action]="queryByGenre.bind(this)" [category]="queryByCategory.bind(this)" [game]="game" (changeEmitter)="loadGameDataFromDb(this.page, this.size)"></app-gamecard>
+                    }
                 }
                     <mat-paginator [length]="total" [pageSize]="50" (page)="onChangePage($event)" [pageSizeOptions]="[25,50,100]"></mat-paginator>
             </div>

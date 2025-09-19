@@ -1,0 +1,86 @@
+main {
+  background-color: hsl(0, 0%, 3%);
+  display: flex;
+  flex-direction: column;
+  padding: 4em 5em;
+  gap: 2em;
+  position: relative;
+  min-height: 100%;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border-radius: 5px;
+    padding: 2em;
+    background-color: hsl(0, 0%, 10%) !important;
+  }
+
+  .table {
+    width: 100%;
+    background-color: hsl(0, 0%, 20%);
+    display: flex;
+    flex-direction: column;
+
+    .header,
+    .row {
+      display: grid;
+      grid-template-columns: 50px 1fr 1fr 100px;
+      align-items: center;
+      padding: 0.75em 1em;
+    }
+
+    .header {
+      font-weight: bold;
+    //   background-color: hsl(0, 0%, 25%);
+        background-color: hsl(36, 100%, 57%);
+      color: hsl(0, 0%, 5%);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .row {
+      border-bottom: 1px solid hsl(0, 0%, 30%);
+      color: hsl(36, 100%, 57%);
+      transition: background 0.2s ease;
+
+      &:nth-child(even) {
+        background-color: hsl(0, 0%, 18%);
+      }
+
+      &:hover {
+        background-color: hsl(36, 0%, 38%);
+      }
+    }
+
+    .cell.rank {
+      text-align: center;
+      font-weight: bold;
+      color: hsl(0, 0%, 10%);
+    }
+
+    .cell.score {
+      text-align: right;
+      font-family: monospace;
+    }
+
+    .cell.click {
+        cursor: pointer;
+    }
+  }
+}
+
+h1 {
+  color: hsl(36, 100%, 57%) !important;
+}
+
+.img-rank {
+    height: 3rem;
+    width: 3rem;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}

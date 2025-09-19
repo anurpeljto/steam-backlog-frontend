@@ -1,6 +1,10 @@
 <section>
     <div class="badges-container">
         <h2>Your Badges</h2>
+        @if(dataLoaded){
+            <span>You are currently playing: <b>{{nextBadge.data.currentStreak.game_title ? nextBadge.data.currentStreak.game_title : 'No game selected currently'}}</b></span>
+            <span>Current streak🔥: {{nextBadge?.data?.currentStreak.current_streak}} / {{nextBadge?.data?.nextBadge?.condition}} days | Rank: (<b>{{nextBadge.data.nextBadge.name}})</b></span>
+        }
         <div class="badge-row" [class.two-rows]="usersBadges.length > 4">
             @if(!dataLoaded){
                 <div class="loading-spinner">
